@@ -1,0 +1,139 @@
+@font-face {
+    font-family: "InterR";
+    src: url("./fonts/Inter/static/Inter-Regular.ttf");
+}
+
+@font-face {
+    font-family: "InterL";
+    src: url("./fonts/Inter/static/Inter-Light.ttf");
+}
+
+@font-face {
+    font-family: "InterSB";
+    src: url("./fonts/Inter/static/Inter-SemiBold.ttf");
+}
+
+@font-face {
+    font-family: "Playfair Display";
+    src: url("./fonts/Playfair_Display/static/PlayfairDisplay-Regular.ttf");
+}
+
+:root {
+    --gris-clair: #f5f3ef;
+    --vert-principal: #00ac66;
+    --gris-texte: #a6a6a6;
+    --gris-fonce: #292929;
+}
+
+* {
+    font-family: "InterR";
+}
+
+body {
+    margin: 0;
+}
+
+.button {
+    padding: 22px 38px;
+    border-radius: 10px;
+    border: 1px solid var(--vert-principal);
+    transition: 0.3s;
+    cursor: pointer;
+    font-family: "InterSB";
+    font-size: 1rem;
+}
+
+.button-green {
+    background-color: var(--vert-principal);
+    color: white;
+}
+
+.button-green:hover {
+    background-color: #006d41;
+    border-color: #006d41;
+}
+
+.button-border-green {
+    color: var(--vert-principal);
+}
+.button-border-green:hover {
+    color: #006d41;
+    border-color: #006d41;
+}
+/* NAVBAR / HEADER*/
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem 0;
+}
+
+.navbar a {
+    color: var(--gris-fonce);
+    text-decoration: none;
+    margin: 0 1rem;
+}
+
+.left-nav,
+.right-nav {
+    display: flex;
+    align-items: center;
+}
+
+header {
+    background-color: var(--gris-clair);
+}
+
+/* TOP HOME */
+
+.top-home {
+    background-color: var(--gris-clair);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 105px;
+    padding-top: 80px;
+    padding-bottom: 101px;
+}
+
+.left-top-home {
+    max-width: 329px;
+}
+
+.left-top-home h1 {
+    font-family: "Playfair Display ";
+    font-size: 36px;
+    font-weight: 400;
+    margin-right: 4px;
+    margin-bottom: 1rem;
+}
+.left-top-home p {
+    font-family: "InterL";
+    margin-bottom: 40px;
+}
+
+.right-top-home img {
+    display: block;
+}
+.right-top-home div {
+    color: var(--gris-texte);
+    font-style: italic;
+    text-align: right;
+    font-size: 12px;
+    margin-top: 12px;
+}
+
+/* FOOTER */
+footer {
+    text-align: right;
+    padding: 22px 6px;
+}
+footer a {
+    margin: 20px;
+    color: var(--gris-fonce);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

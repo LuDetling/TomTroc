@@ -15,16 +15,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emilie Forteroche</title>
+    <title>Tom troc</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
     <header>
-        <nav>
-
+        <nav class="navbar">
+            <div class="left-nav">
+                <a href="/tomtroc"><img src="/tomtroc/images/logo.svg" alt="Logo de Tom troc" width="155" height="51"></a>
+                <a href="/tomtroc">Accueil</a>
+                <a href="/tomtroc/ourbooks">Nos livres à l'échange</a>
+            </div>
+            <div class="right-nav">
+                <a href="/tomtroc/messagerie">Messagerie</a>
+                <a href="/tomtroc/account">Mon compte</a>
+                <a href="/tomtroc/connexion">Connexion</a>
+            </div>
         </nav>
-        <h1>Tom troc</h1>
     </header>
 
     <main>
@@ -32,7 +40,10 @@
     </main>
 
     <footer>
-        <p>Copyright © Tom troc 2023 - Openclassrooms</p>
+        <a href="/tomtroc">Politique de confidentialité</a>
+        <a href="/tomtroc">Mentions légales</a>
+        <a href="/tomtroc">Tom Troc©</a>
+        <a href="/tomtroc"><img src="/tomtroc/images/logo-footer.svg" alt="Logo Tom troc footer"></a>
     </footer>
 
 </body>

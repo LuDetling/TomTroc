@@ -5,6 +5,7 @@ class BookController
 
     public function showHome(): void
     {
-        echo "voici l'accueil";
+        $view = new View("Home");
+        $view->render("home");
     }
 }
