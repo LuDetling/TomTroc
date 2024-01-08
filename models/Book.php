@@ -1,29 +1,27 @@
 <?php
 
-class Book
+class Book extends AbstractEntity
 {
-    private int $id;
-    private string $title;
-    private string $author;
+    private string $title = "";
+    private string $author = "";
     private string $img;
     private string $description;
     private bool $disponibility;
 
-    public function getId(): string
-    {
-        return $this->id;
-    }
 
-    public function setId(string $id): void
-    {
-        $this->id = $id;
-    }
-
+    /**
+     * Getter pour le titre du livre.
+     * @return string
+     */
     public function getTitle(): string
     {
         return $this->title;
     }
 
+    /**
+     * Setter pour le titre du livre.
+     * @param string $title
+     */
     public function setTitle(string $title): void
     {
         $this->title = $title;

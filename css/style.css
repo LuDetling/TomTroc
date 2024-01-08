@@ -41,6 +41,9 @@ body {
     cursor: pointer;
     font-family: "InterSB";
     font-size: 1rem;
+    text-decoration: none;
+    display: block;
+    width: fit-content;
 }
 
 .button-green {
@@ -136,4 +139,166 @@ footer a {
 
 footer a:hover {
     text-decoration: underline;
+}
+
+/* DERNIERS LIVRES AJOUTES */
+
+.last-book {
+    background-color: #faf9f7;
+    padding-top: 80px;
+    padding-bottom: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.last-book h2 {
+    text-align: center;
+    font-family: "Playfair Display";
+    font-weight: 400;
+    font-size: 2rem;
+    margin-bottom: 80px;
+}
+
+.content-last-book {
+    display: flex;
+    flex-wrap: wrap;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 38px;
+}
+
+.card-last-book {
+    background-color: white;
+    box-shadow: 0 0 24 0 rgba(0, 0, 0, 0.01);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 48px;
+}
+
+.card-last-book img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.text-last-book {
+    padding: 20px 14px;
+}
+
+.text-last-book h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    color: black;
+}
+.last-book-author {
+    font-size: 14px;
+    margin-bottom: 22px;
+    color: var(--gris-texte);
+}
+
+.last-book-seller {
+    color: var(--gris-texte);
+    font-size: 10px;
+    font-style: italic;
+}
+
+/* COMMENT CA MARCHE ? */
+
+.how-it-works {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--gris-clair);
+    padding: 80px 0;
+}
+
+.how-it-works h2 {
+    font-family: "Playfair Display";
+    font-weight: 400;
+    font-size: 2rem;
+    margin: 0;
+    margin-bottom: 24px;
+}
+
+.how-it-works p {
+    margin-bottom: 40px;
+    text-align: center;
+    font-family: "InterL";
+}
+
+.card-works {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+    gap: 36px;
+}
+
+.card-works div {
+    background-color: white;
+    border-radius: 10px;
+    padding: 44px 18px;
+    width: 215px;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* BANIERE HOME */
+
+.baniere-home {
+    width: 100%;
+    max-height: 230px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Nos valeurs */
+
+.our-values {
+    padding: 80px 0;
+    background-color: var(--gris-clair);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.our-values h2 {
+    font-family: "Playfair Display";
+    font-weight: 400;
+    margin-bottom: 29px;
+    font-size: 2rem;
+}
+
+.our-values p {
+    max-width: 392px;
+    font-family: "InterL";
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+.content-our-values div {
+    color: var(--gris-texte);
+    font-size: 12px;
+    font-style: italic;
+}
+
+.team-heart {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.team-heart div {
+    margin-top: 23px;
+}
+
+.team-heart img {
+    position: relative;
+    left: 4rem;
 }
