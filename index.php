@@ -16,9 +16,17 @@ try {
             $bookController = new BookController();
             $bookController->showHome();
             break;
+        case 'showBooks':
+            $bookController = new BookController();
+            $bookController->showBooks();
+            break;
+        case 'showBook':
+            $bookController = new BookController();
+            $bookController->showBook();
+            break;
+        default:
+            throw new Exception("La page demandée n'existe pas.");
     }
-
-    // case '':
 } catch (Exception $e) {
     // En cas d'erreur, on affiche la page d'erreur.
     $errorView = new View('Erreur');

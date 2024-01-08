@@ -1,10 +1,3 @@
-<?php
-
-/**
- * Affichage de Liste des articles. 
- */
-?>
-
 <section class="top-home">
     <div class="left-top-home">
         <h1>Rejoignez nos lecteurs passionnés</h1>
@@ -19,22 +12,22 @@
 
 <section class="last-book">
     <h2>Les derniers livres ajoutés</h2>
-    <div class="content-last-book">
+    <div class="content-cards content-last-cards">
         <?php
         // ajouter les bons liens 
         foreach ($books as $book) {
-            echo "<a href='/tomtroc' class='card-last-book'>";
+            echo "<a href='index.php?action=showBook&id=" . $book->getId() . "' class='card-book'>";
             echo "  <img src='" . $book->getImg() . "' alt='image du livre " . $book->getTitle() . " '>";
-            echo "  <div class='text-last-book'>";
+            echo "  <div class='text-book'>";
             echo "      <h3>" . $book->getTitle() . "</h3>";
-            echo "      <div class='last-book-author'>" . $book->getAuthor() . "</div>";
-            echo "      <div class='last-book-seller'>vendu par : ???</div>";
+            echo "      <div class='book-author'>" . $book->getAuthor() . "</div>";
+            echo "      <div class='book-seller'>vendu par : ???</div>";
             echo "  </div>";
             echo "</a>";
         }
         ?>
     </div>
-    <a href="/tomtroc" class="button button-green">Voir tous les livres</a>
+    <a href="index.php?action=showBooks" class="button button-green">Voir tous les livres</a>
 </section>
 
 <section class="how-it-works">
@@ -46,7 +39,7 @@
         <div>Parcourez les livres </br> disponibles chez d'autres </br> membres.</div>
         <div>Proposez un échange et </br> discutez avec d'autres </br> passionnés de lecture.</div>
     </div>
-    <a href="/tomtroc" class="button button-border-green">Voir tous les livres</a>
+    <a href="index.php?action=showBooks" class="button button-border-green">Voir tous les livres</a>
 </section>
 
 <img src="/tomtroc/images/clay-banks-4uH8rdyEbH4-unsplash 1.png" alt="" class="baniere-home">

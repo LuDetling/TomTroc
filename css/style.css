@@ -33,6 +33,20 @@ body {
     margin: 0;
 }
 
+h1,
+h2 {
+    font-family: "Playfair Display";
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
 .button {
     padding: 22px 38px;
     border-radius: 10px;
@@ -63,7 +77,14 @@ body {
     color: #006d41;
     border-color: #006d41;
 }
+
 /* NAVBAR / HEADER*/
+
+header {
+    position: sticky;
+    top: 0;
+    box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.01);
+}
 .navbar {
     display: flex;
     align-items: center;
@@ -75,6 +96,7 @@ body {
     color: var(--gris-fonce);
     text-decoration: none;
     margin: 0 1rem;
+    font-size: 14px;
 }
 
 .left-nav,
@@ -87,11 +109,15 @@ header {
     background-color: var(--gris-clair);
 }
 
+.active {
+    font-family: 'InterSB';
+}
 /* TOP HOME */
 
 .top-home {
     background-color: var(--gris-clair);
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 105px;
@@ -104,9 +130,6 @@ header {
 }
 
 .left-top-home h1 {
-    font-family: "Playfair Display ";
-    font-size: 36px;
-    font-weight: 400;
     margin-right: 4px;
     margin-bottom: 1rem;
 }
@@ -147,9 +170,10 @@ footer a:hover {
     background-color: #faf9f7;
     padding-top: 80px;
     padding-bottom: 64px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+}
+
+.last-book .button {
+    margin: auto;
 }
 
 .last-book h2 {
@@ -160,49 +184,52 @@ footer a:hover {
     margin-bottom: 80px;
 }
 
-.content-last-book {
+.content-cards {
     display: flex;
     flex-wrap: wrap;
-    flex-wrap: wrap;
-    justify-content: center;
     gap: 38px;
+    max-width: 914px;
+    margin: auto;
 }
 
-.card-last-book {
+.content-last-cards {
+    margin-bottom: 48px;
+}
+
+.card-book {
     background-color: white;
-    box-shadow: 0 0 24 0 rgba(0, 0, 0, 0.01);
+    box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.01);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     text-decoration: none;
     display: block;
-    margin-bottom: 48px;
 }
 
-.card-last-book img {
+.card-book img {
     width: 200px;
     height: 200px;
     object-fit: cover;
     display: block;
 }
 
-.text-last-book {
+.text-book {
     padding: 20px 14px;
 }
 
-.text-last-book h3 {
+.text-book h3 {
     margin: 0;
     font-size: 1rem;
     font-weight: 400;
     margin-bottom: 0.5rem;
     color: black;
 }
-.last-book-author {
+.book-author {
     font-size: 14px;
     margin-bottom: 22px;
     color: var(--gris-texte);
 }
 
-.last-book-seller {
+.book-seller {
     color: var(--gris-texte);
     font-size: 10px;
     font-style: italic;
@@ -291,6 +318,7 @@ footer a:hover {
 .team-heart {
     display: flex;
     justify-content: space-between;
+    /* width: 462px; */
     width: 100%;
 }
 
@@ -300,5 +328,137 @@ footer a:hover {
 
 .team-heart img {
     position: relative;
+    margin-top: 9px;
     left: 4rem;
+}
+
+/* NOS LIVRES */
+
+.our-books {
+    background-color: #faf9f7;
+    padding-top: 130px;
+    padding-bottom: 80px;
+}
+
+.title-search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 914px;
+    margin: auto;
+    margin-bottom: 72px;
+}
+
+.title-search input {
+    color: var(--gris-texte);
+    font-size: 14px;
+    padding: 1rem 12px;
+    border-radius: 6px;
+    border: 1px solid #f0f0f0;
+}
+
+/* DETAIL BOOK */
+
+.breadcrumb-detail-book {
+    background-color: #faf9f7;
+    padding-top: 1rem;
+}
+
+.breadcrumb {
+    font-size: 10px;
+    color: var(--gris-texte);
+    margin-bottom: 1rem;
+    margin-left: 150px;
+}
+.breadcrumb a {
+    color: var(--gris-texte);
+    display: inline-block;
+    text-decoration: none;
+    font-family: "InterL";
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb div {
+    display: inline-block;
+    font-family: "InterL";
+}
+
+.detail-book {
+    display: flex;
+    align-items: center;
+}
+
+.detail-book img {
+    width: 50%;
+    max-height: 863px;
+    object-fit: cover;
+}
+
+.content-book {
+    width: 485px;
+    margin-left: 84px;
+}
+
+.content-book h1 {
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+.content-book .author {
+    color: var(--gris-texte);
+    padding-bottom: 32.5px;
+    position: relative;
+}
+
+.content-book .author::after {
+    content: "";
+    display: block;
+    background-color: var(--gris-texte);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 27px;
+    height: 1px;
+}
+
+.content-book .title-part {
+    margin-top: 32.5px;
+    margin-bottom: 1rem;
+    font-size: 8px;
+    font-family: "InterSB";
+}
+
+.content-book .description {
+    font-size: 14px;
+}
+
+.content-owner {
+    background-color: white;
+    border-radius: 114px;
+    padding: 6px 17px 6px 6px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+.content-owner img {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.content-owner div {
+    font-size: 14px;
+    margin-left: 1rem;
+}
+
+.content-book .button {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 80px;
 }

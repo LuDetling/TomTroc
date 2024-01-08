@@ -23,14 +23,14 @@
     <header>
         <nav class="navbar">
             <div class="left-nav">
-                <a href="/tomtroc"><img src="/tomtroc/images/logo.svg" alt="Logo de Tom troc" width="155" height="51"></a>
-                <a href="/tomtroc">Accueil</a>
-                <a href="/tomtroc/ourbooks">Nos livres à l'échange</a>
+                <a href="index.php?action=home"><img src="/tomtroc/images/logo.svg" alt="Logo de Tom troc" width="155" height="51"></a>
+                <a href="index.php?action=home" class="<?= empty($_GET) || (isset($_GET["action"]) && !empty($_GET["action"] == "home")) ? 'active' : "" ?>">Accueil</a>
+                <a href="index.php?action=showBooks" class="<?= isset($_GET["action"]) && !empty($_GET["action"] == "showBooks" || $_GET["action"] == "showBook") ? 'active' : "" ?>">Nos livres à l'échange</a>
             </div>
             <div class="right-nav">
-                <a href="/tomtroc/messagerie">Messagerie</a>
-                <a href="/tomtroc/account">Mon compte</a>
-                <a href="/tomtroc/connexion">Connexion</a>
+                <a href="index.php?action=messagerie" class="<?= isset($_GET["action"]) && !empty($_GET["action"] == "messagerie") ? 'active' : "" ?>">Messagerie</a>
+                <a href="index.php?action=account" class="<?= isset($_GET["action"]) && !empty($_GET["action"] == "account") ? 'active' : "" ?>">Mon compte</a>
+                <a href="index.php?action=connexion" class="<?= isset($_GET["action"]) && !empty($_GET["action"] == "connexion") ? 'active' : "" ?>">Connexion</a>
             </div>
         </nav>
     </header>
@@ -40,10 +40,10 @@
     </main>
 
     <footer>
-        <a href="/tomtroc">Politique de confidentialité</a>
-        <a href="/tomtroc">Mentions légales</a>
-        <a href="/tomtroc">Tom Troc©</a>
-        <a href="/tomtroc"><img src="/tomtroc/images/logo-footer.svg" alt="Logo Tom troc footer"></a>
+        <a href="index.php">Politique de confidentialité</a>
+        <a href="index.php">Mentions légales</a>
+        <a href="index.php">Tom Troc©</a>
+        <a href="index.php"><img src="/tomtroc/images/logo-footer.svg" alt="Logo Tom troc footer"></a>
     </footer>
 
 </body>
