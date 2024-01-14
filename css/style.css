@@ -99,6 +99,10 @@ header {
     font-size: 14px;
 }
 
+.navbar a:hover {
+    font-weight: bold;
+}
+
 .left-nav,
 .right-nav {
     display: flex;
@@ -110,7 +114,7 @@ header {
 }
 
 .active {
-    font-family: 'InterSB';
+    font-family: "InterSB";
 }
 /* TOP HOME */
 
@@ -461,4 +465,59 @@ footer a:hover {
     width: 100%;
     text-align: center;
     margin-bottom: 80px;
+}
+
+/* Logs */
+
+.log-image {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #faf9f7;
+}
+
+.log-image img {
+    max-width: 50%;
+    object-fit: cover;
+}
+
+.log-content {
+    width: 50%;
+}
+
+.log {
+    margin: auto;
+    margin-top: 130px;
+    width: 322px;
+}
+
+.log h1 {
+    margin-bottom: 56px;
+}
+
+.log label {
+    color: var(--gris-texte);
+    font-size: 14px;
+    margin-bottom: 10px;
+    display: block;
+}
+.log form div input {
+    margin-bottom: 32px;
+    height: 50px;
+    width: 100%;
+    border: 1px solid #f0f0f0;
+    border-radius: 6px;
+}
+
+.log form > input {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.log .connexion {
+    font-size: 14px;
+}
+
+.log .connexion a {
+    color: black;
 }

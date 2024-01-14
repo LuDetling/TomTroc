@@ -24,6 +24,18 @@ try {
             $bookController = new BookController();
             $bookController->showBook();
             break;
+        case 'inscription':
+            $adminController = new AdminController();
+            $adminController->inscription();
+            break;
+        case 'newUser':
+            $adminController = new AdminController();
+            $adminController->newUser();
+            break;
+        case 'connexion':
+            $adminController = new AdminController();
+            $adminController->connexion();
+            break;
         default:
             throw new Exception("La page demandée n'existe pas.");
     }
