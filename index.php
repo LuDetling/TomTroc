@@ -28,10 +28,6 @@ try {
             $adminController = new AdminController();
             $adminController->inscription();
             break;
-        case 'newUser':
-            $adminController = new AdminController();
-            $adminController->newUser();
-            break;
         case 'connexion':
             $adminController = new AdminController();
             $adminController->connexion();
