@@ -39,19 +39,16 @@ class UserManager extends AbstractEntityManager
         return 0;
     }
 
-    public function loginUser(User $user): ?User
+    public function loginUser(string $email): ?User
     {
-        $sql = "SELECT * FROM user WHERE email = :email AND password = :password";
+        $sql = "SELECT * FROM user WHERE email = :email";
         $result = $this->db->query($sql, [
-            "email" => $user->getEmail(),
-            "password" => password_verify($user->getPassword(), PASSWORD_BCRYPT)
+            "email" => $email
         ]);
         $user = $result->fetch();
         if ($user) {
-            $_SESSION["user"] = new Book($user);
-            return new Book($user);
+            return new User($user);
         }
-        $_SESSION["user"] = password_verify($user->getPassword(), PASSWORD_BCRYPT);
         return null;
     }
 }

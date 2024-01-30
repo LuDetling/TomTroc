@@ -1,12 +1,3 @@
-<?php
-if (isset($_SESSION["error"])) {
-    var_dump($_SESSION["error"]);
-}
-if (isset($_SESSION["user"])) {
-    var_dump($_SESSION["user"]);
-}
-?>
-
 <section class="log-image">
     <div class="log-content">
         <div class="log">
@@ -15,12 +6,12 @@ if (isset($_SESSION["user"])) {
                 <div>
                     <label for="email">Adresse email</label>
                     <input type="email" id="email" name="email">
-                    <?= !empty($_POST["email"]) ? "" : "<p>Adresse email non valide</p>" ?>
+                    <?= !empty($_SESSION["error"]["email"]) ? "<p>" . $_SESSION["error"]["email"] . "</p>" : "" ?>
                 </div>
                 <div>
                     <label for="password">Mot de passe</label>
                     <input type="password" id="password" name="password">
-                    <?= !empty($_POST["password"]) ? "" : "<p>Mot de passe non valide</p>" ?>
+                    <?= !empty($_SESSION["error"]["password"]) ? "<p>" . $_SESSION["error"]["password"] . "</p>" : "" ?>
                 </div>
                 <input type="submit" class="button button-green" value="Se connecter">
             </form>

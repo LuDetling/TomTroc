@@ -1,7 +1,7 @@
 <section class="breadcrumb-detail-book">
     <div class="breadcrumb">
         <a href="index.php?action=showBooks">Nos livres</a>
-        <div>> <?= $book->getTitle() ?></div>
+        <div> <?= $book->getTitle() ?></div>
     </div>
     <div class="detail-book">
         <img src="<?= $book->getImg() ?>" alt="image du livre <?= $book->getTitle() ?>">

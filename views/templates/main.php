@@ -29,8 +29,17 @@
             </div>
             <div class="right-nav">
                 <a href="index.php?action=messagerie" class="<?= isset($_GET["action"]) && !empty($_GET["action"] == "messagerie") ? 'active' : "" ?>">Messagerie</a>
-                <a href="index.php?action=account" class="<?= isset($_GET["action"]) && !empty($_GET["action"] == "account") ? 'active' : "" ?>">Mon compte</a>
-                <a href="index.php?action=connexion" class="<?= isset($_GET["action"]) && !empty($_GET["action"] == "connexion") ? 'active' : "" ?>">Connexion</a>
+                <?php if (isset($_SESSION["user"])) {
+                ?>
+                    <a href="index.php?action=profil" class="<?= isset($_GET["action"]) && !empty($_GET["action"] == "account") ? 'active' : "" ?>">Mon compte</a>
+                    <a href='index.php?action=logout'>Déconnexion</a>
+                <?php
+                } else {
+                ?>
+                    <a href="index.php?action=connexion" class="<?= isset($_GET["action"]) && !empty($_GET["action"] == "connexion") ? 'active' : "" ?>">Connexion</a>
+                <?php
+                }
+                ?>
             </div>
         </nav>
     </header>

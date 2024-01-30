@@ -32,6 +32,14 @@ try {
             $adminController = new AdminController();
             $adminController->connexion();
             break;
+        case 'logout':
+            unset($_SESSION["user"]);
+            Utils::redirect("home");
+            break;
+        case "profil":
+            $userController = new UserController();
+            $userController->showProfil();
+            break;
         default:
             throw new Exception("La page demandée n'existe pas.");
     }

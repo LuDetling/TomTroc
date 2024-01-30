@@ -17,23 +17,35 @@ class AdminController
 
     public function loginUser(): void
     {
-        $error = [
-            "email" => null,
-            "password" => null,
-        ];
+
 
         $email = $_POST["email"];
-        $password = $_POST["password"];
-
-        $user = new User([
-            "email" => $email,
-            "password" => $password
-        ]);
 
         $userManager = new UserManager();
-        $userManager->loginUser($user);
+        $user = $userManager->loginUser($email);
 
-        $_SESSION["error"] = $error;
+        if (!$user) {
+            $_SESSION["error"]["email"] = "Pas la bonne email";
+            return;
+        }
+
+        $password = $_POST["password"];
+        if (!password_verify($password, $user->getPassword())) {
+            $_SESSION["error"]["password"] = "Le mot de passe est incorrect";
+            return;
+        }
+
+        $_SESSION["user"] = serialize($user);
+        unset($_SESSION["error"]);
+
+        Utils::redirect("home");
+    }
+
+    public function checkIfUserIsConnected(): void
+    {
+        if (!isset($_SESSION["user"])) {
+            Utils::redirect("connexion");
+        }
     }
 
     public function inscription(): void
