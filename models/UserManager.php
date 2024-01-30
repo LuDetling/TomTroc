@@ -6,7 +6,7 @@ class UserManager extends AbstractEntityManager
     // public function newUser(User $user): bool
     {
         //Vérification si le pseudo et email son unique
-
+        //lower
         $sqlUser = "SELECT pseudo, email FROM user WHERE pseudo = :pseudo OR email = :email";
         $resultUser = $this->db->query($sqlUser, [
             'pseudo' => $user->getPseudo(),
