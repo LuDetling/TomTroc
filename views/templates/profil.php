@@ -1,5 +1,7 @@
 <?php
-$user = unserialize($_SESSION["user"]);
+if (isset($_SESSION["error"])) {
+    var_dump($_SESSION["error"]);
+}
 ?>
 <section class="content-profil-background">
     <div class="content-profil">
@@ -19,18 +21,18 @@ $user = unserialize($_SESSION["user"]);
             <div class="content-edit-profil">
                 <div class="edit-profil">
                     <h3>Vos informations personnelles</h3>
-                    <form action="index.php?action=profil">
+                    <form action="index.php?action=profil" method="POST">
                         <div>
                             <label for="email">Adresse email</label>
-                            <input type="text" name="email" id="email">
+                            <input type="text" name="email" id="email" value="<?= $user->email ?>">
                         </div>
                         <div>
                             <label for="password">Mot de passe</label>
-                            <input type="text" name="password" id="password">
+                            <input type="password" name="password" id="password">
                         </div>
                         <div>
                             <label for="pseudo">Pseudo</label>
-                            <input type="text" name="pseudo" id="pseudo">
+                            <input type="text" name="pseudo" id="pseudo" value="<?= $user->pseudo ?>">
                         </div>
                         <button type="submit" class="button-border-green button">Enregistrer</button>
                     </form>
