@@ -34,6 +34,7 @@ try {
             break;
         case 'logout':
             unset($_SESSION["user"]);
+            unset($_SESSION["error"]);
             Utils::redirect("home");
             break;
         case "profil":

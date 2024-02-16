@@ -1,7 +1,4 @@
 <?php
-if (isset($_SESSION["error"])) {
-    var_dump($_SESSION["error"]);
-}
 ?>
 <section class="content-profil-background">
     <div class="content-profil">
@@ -34,11 +31,49 @@ if (isset($_SESSION["error"])) {
                             <label for="pseudo">Pseudo</label>
                             <input type="text" name="pseudo" id="pseudo" value="<?= $user->pseudo ?>">
                         </div>
+                        <?= isset($_SESSION["error"]) ? $_SESSION["error"] : null ?>
                         <button type="submit" class="button-border-green button">Enregistrer</button>
                     </form>
                 </div>
             </div>
         </div>
-        <div class="my-books"></div>
+        <div class="my-books">
+            <table>
+                <thead>
+                    <tr>
+                        <th>PHOTO</th>
+                        <th>TITRE</th>
+                        <th>AUTEUR</th>
+                        <th>DESCRIPTION</th>
+                        <th>DISPONIBILITE</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="images/tristana.png" alt="photo du livre"></td>
+                        <td>Tristana book</td>
+                        <td>Riot</td>
+                        <td>Livre sur le personnage tristana</td>
+                        <td class="disponible">Disponible</td>
+                        <td class="edit-delete">
+                            <a href="#" class="edit">editer</a>
+                            <a href="#" class="delete">supprimer</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="images/tristana.png" alt="photo du livre"></td>
+                        <td>Tristana book</td>
+                        <td>Riot</td>
+                        <td>Livre sur le personnage tristana</td>
+                        <td class="disponible">Disponible</td>
+                        <td class="edit-delete">
+                            <a href="#" class="edit">editer</a>
+                            <a href="#" class="delete">supprimer</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </section>
