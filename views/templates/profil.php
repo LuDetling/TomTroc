@@ -1,4 +1,10 @@
 <?php
+
+if (isset($_SESSION["userId"])) {
+    var_dump($_SESSION["userId"]);
+    var_dump($_SESSION["rowId"]);
+}
+
 ?>
 <section class="content-profil-background">
     <div class="content-profil">
@@ -13,7 +19,7 @@
                 <h2><?= $user->pseudo ?></h2>
                 <div class="date-account">Membre depuis 1 an</div>
                 <h3>BIBLIOTHEQUE</h3>
-                <div class="count-books">4 livres</div>
+                <div class="count-books"><?= count($books) ?> livres</div>
             </div>
             <div class="content-edit-profil">
                 <div class="edit-profil">
@@ -50,28 +56,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><img src="images/tristana.png" alt="photo du livre"></td>
-                        <td>Tristana book</td>
-                        <td>Riot</td>
-                        <td>Livre sur le personnage tristana</td>
-                        <td class="disponible">Disponible</td>
-                        <td class="edit-delete">
-                            <a href="#" class="edit">editer</a>
-                            <a href="#" class="delete">supprimer</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img src="images/tristana.png" alt="photo du livre"></td>
-                        <td>Tristana book</td>
-                        <td>Riot</td>
-                        <td>Livre sur le personnage tristana</td>
-                        <td class="disponible">Disponible</td>
-                        <td class="edit-delete">
-                            <a href="#" class="edit">editer</a>
-                            <a href="#" class="delete">supprimer</a>
-                        </td>
-                    </tr>
+                    <?php
+                    foreach ($books as $book) {
+                        echo "<tr>";
+                        echo "  <td><img src=" . $book->getImg() . " alt='Image du livre " . $book->getTitle() . "'></td>";
+                        echo "  <td class='title'>" . $book->getTitle() . "</td>";
+                        echo "  <td class='author'>" . $book->getAuthor() . "</td>";
+                        echo "  <td><p class='description'> " . $book->getDescription() . "</p></td>";
+                        if ($book->getDisponibility()) {
+                            echo "  <td><div class='disponible'>Disponible</div></td>";
+                        } else {
+                            echo "  <td><div class='indisponible'>non dispo.</div></td>";
+                        }
+                        echo "  <td class='edit-delete'>";
+                        echo "      <a href='#' class='edit'>Éditer</a>";
+                        echo "      <a href='#' class='delete'>Supprimer</a>";
+                        echo "  </td>";
+                        echo "</tr>";
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>

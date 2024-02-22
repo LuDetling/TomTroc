@@ -656,13 +656,13 @@ table tr:last-child td:last-child {
 }
 
 .my-books tbody td {
-    padding-top: 26px;
-    padding-bottom: 26px;
     border: none;
-    padding-right: 80px;
+    font-size: 12px;
 }
 
 .my-books tbody td:first-child {
+    padding-bottom: 26px;
+    padding-top: 26px;
     padding-left: 66px;
 }
 
@@ -674,4 +674,38 @@ table tr:last-child td:last-child {
     width: 78px;
     height: 78px;
     object-fit: cover;
+}
+
+.my-books tbody .description {
+    display: -webkit-box;
+    -webkit-box-align: center;
+    max-width: 128px;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 0;
+    font-style: italic;
+}
+
+.my-books tbody .edit-delete a:first-child {
+    margin-right: 28px;
+    color: black;
+}
+.my-books tbody .edit-delete a:last-child {
+    color: red;
+}
+
+.my-books tbody .indisponible {
+    background-color: #c46d6d;
+    color: white;
+    padding: 3.7px 13.31px;
+    width: fit-content;
+    border-radius: 29.58px;
+}
+.my-books tbody .disponible {
+    background-color: #6dc4a1;
+    color: white;
+    padding: 3.7px 13.31px;
+    width: fit-content;
+    border-radius: 29.58px;
 }

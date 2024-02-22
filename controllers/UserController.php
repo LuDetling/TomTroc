@@ -8,15 +8,13 @@ class UserController
 
         if (!empty($_POST["password"]) && !empty($_POST["email"]) && !empty($_POST["pseudo"])) {
             $user = $this->editProfil($user);
-        } else {
-            $_SESSION["error"] = "Vous avez un champ vide";
         }
 
         $bookManager = new BookManager();
-        // $books = $bookManager->getBookByUserId();
+        $books = $bookManager->getBookByUserId($user->getId());
 
         $view = new View('ShowProfil');
-        $view->render('profil', ['user' => $user]);
+        $view->render('profil', ['user' => $user, 'books' => $books]);
     }
 
     //Edit profil
