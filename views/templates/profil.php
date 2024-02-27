@@ -1,10 +1,4 @@
 <?php
-
-if (isset($_SESSION["userId"])) {
-    var_dump($_SESSION["userId"]);
-    var_dump($_SESSION["rowId"]);
-}
-
 ?>
 <section class="content-profil-background">
     <div class="content-profil">
@@ -15,6 +9,7 @@ if (isset($_SESSION["userId"])) {
             <div class="profil">
                 <img src="images/tristana.png" alt="photo de profile">
                 <input type="file" id="avatar" value="modifier" name="avatar" accept="image/png, image/jpeg">
+                <label for="avatar" class="avatar">modifier</label>
                 <div class="trait"></div>
                 <h2><?= $user->pseudo ?></h2>
                 <div class="date-account">Membre depuis 1 an</div>
@@ -37,7 +32,7 @@ if (isset($_SESSION["userId"])) {
                             <label for="pseudo">Pseudo</label>
                             <input type="text" name="pseudo" id="pseudo" value="<?= $user->pseudo ?>">
                         </div>
-                        <?= isset($_SESSION["error"]) ? $_SESSION["error"] : null ?>
+                        <?= isset($_SESSION["error"]) ? "<p>" . $_SESSION["error"] . "</p>" : null ?>
                         <button type="submit" class="button-border-green button">Enregistrer</button>
                     </form>
                 </div>
@@ -59,7 +54,7 @@ if (isset($_SESSION["userId"])) {
                     <?php
                     foreach ($books as $book) {
                         echo "<tr>";
-                        echo "  <td><img src=" . $book->getImg() . " alt='Image du livre " . $book->getTitle() . "'></td>";
+                        echo "  <td><img src=upload/books/" . $book->getImg() . " alt='Image du livre " . $book->getTitle() . "'></td>";
                         echo "  <td class='title'>" . $book->getTitle() . "</td>";
                         echo "  <td class='author'>" . $book->getAuthor() . "</td>";
                         echo "  <td><p class='description'> " . $book->getDescription() . "</p></td>";
@@ -69,7 +64,7 @@ if (isset($_SESSION["userId"])) {
                             echo "  <td><div class='indisponible'>non dispo.</div></td>";
                         }
                         echo "  <td class='edit-delete'>";
-                        echo "      <a href='#' class='edit'>Éditer</a>";
+                        echo "      <a href='index.php?action=editBook&id=" . $book->getId() . "' class='edit'>Éditer</a>";
                         echo "      <a href='#' class='delete'>Supprimer</a>";
                         echo "  </td>";
                         echo "</tr>";

@@ -14,7 +14,7 @@
         // ajouter les bons liens 
         foreach ($books as $book) {
             echo "<a href='index.php?action=showBook&id=" . $book->getId() . "' class='card-book'>";
-            echo "  <img src='" . $book->getImg() . "' alt='image du livre " . $book->getTitle() . " '>";
+            echo "  <img src='upload/books/" . $book->getImg() . "' alt='image du livre " . $book->getTitle() . " '>";
             echo "  <div class='text-book'>";
             echo "      <h3>" . $book->getTitle() . "</h3>";
             echo "      <div class='book-author'>" . $book->getAuthor() . "</div>";

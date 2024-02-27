@@ -8,6 +8,9 @@ class UserController
 
         if (!empty($_POST["password"]) && !empty($_POST["email"]) && !empty($_POST["pseudo"])) {
             $user = $this->editProfil($user);
+            $_SESSION["user"] = serialize($user);
+        } else if (isset($_POST["password"])) {
+            $_SESSION["error"] = "Vous avez un champ vide";
         }
 
         $bookManager = new BookManager();
@@ -26,11 +29,10 @@ class UserController
             "password" => password_hash($_POST["password"], PASSWORD_BCRYPT),
             "pseudo" => $_POST["pseudo"]
         ]);
-        $_SESSION["user"] = serialize($editUser);
         unset($_SESSION["error"]);
 
         $userManager = new UserManager();
-        $userManager->editUser($user);
-        return $editUser;
+        $userEdited = $userManager->editUser($editUser, $user);
+        return $userEdited;
     }
 }

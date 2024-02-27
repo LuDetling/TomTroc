@@ -7,6 +7,9 @@ require_once 'config/autoload.php';
 // Si aucune action n'est demandée, on affiche la page d'accueil.
 $action = Utils::request('action', 'home');
 
+//supprimer les erreurs quand on change de page ?
+unset($_SESSION["error"]);
+unset($_SESSION["errorImg"]);
 // Try catch global pour gérer les erreurs
 try {
     // Pour chaque action, on appelle le bon contrôleur et la bonne méthode.
@@ -23,6 +26,10 @@ try {
         case 'showBook':
             $bookController = new BookController();
             $bookController->showBook();
+            break;
+        case 'editBook':
+            $bookController = new BookController();
+            $bookController->editBook();
             break;
         case 'inscription':
             $adminController = new AdminController();

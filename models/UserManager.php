@@ -28,7 +28,7 @@ class UserManager extends AbstractEntityManager
 
         //Si le tableau users est vide alors tout est unique on peut ajouter un nouvel utilisateur
         if (!$users) {
-            $sql = "INSERT INTO user (pseudo, email, password) VALUES (:pseudo, :email, :password)";
+            $sql = "INSERT INTO user (pseudo, email, password, date_creation) VALUES (:pseudo, :email, :password, now())";
             $result = $this->db->query($sql, [
                 "pseudo" => $user->getPseudo(),
                 "email" => $user->getEmail(),
@@ -52,51 +52,32 @@ class UserManager extends AbstractEntityManager
         return null;
     }
 
-    public function editUser(User $user): void
+    public function editUser(User $editUser, User $user): User
     {
-        //rechercher si un email ou pseudo est dans la bdd 
         $sqlUser = "SELECT id, pseudo, email FROM user WHERE pseudo = :pseudo OR email = :email";
         $resultUser = $this->db->query($sqlUser, [
-            'pseudo' => $user->getPseudo(),
-            'email' => $user->getEmail()
+            'pseudo' => $editUser->getPseudo(),
+            'email' => $editUser->getEmail()
         ]);
 
         $results = [];
 
-        foreach ($resultUser as $row) {
-            $results[] = new User($row);
-            // $row = new User();
-            // $_SESSION["userId"] = $user->getId();
-            // $_SESSION["rowId"] = $row->getId();
+        foreach ($resultUser as $result) {
+            $results[] = new User($result);
         }
 
-        foreach ($results as $result) {
-            $_SESSION["userId"] = $user->getId();
-            $_SESSION["rowId"] = $result->getId();
-            if ($user->getId() != $result->getId()) {
-                $_SESSION["userId"] = $user->getId();
-                $_SESSION["rowId"] = $result->getId();
-            } else {
-                $_SESSION["test"] = "c bon";
-                unset($_SESSION["userId"]);
-            }
+        if (count($results) == 2) {
+            $_SESSION["error"] = "Pseudo ou adresse email déjà utilisé !";
+            return $user;
+        } else {
+            $sql = "UPDATE user SET email = :email, pseudo = :pseudo, password = :password WHERE id = :id";
+            $this->db->query($sql, [
+                "id" => $editUser->getId(),
+                "email" => $editUser->getEmail(),
+                "pseudo" => $editUser->getPseudo(),
+                "password" => $editUser->getPassword(),
+            ]);
+            return $editUser;
         }
-
-        // $row = new User();
-        // if ($user->getId() != $row->getId()) {
-        //     $_SESSION["userId"] = $user->getId();
-        //     $_SESSION["rowId"] = $row->getId();
-        //     //return -1; meme probleme sur blog emilie
-        // } else {
-        //     $_SESSION["test"] = "c bon";
-        // }
-
-        // $sql = "UPDATE user SET email = :email, pseudo = :pseudo, password = :password WHERE id = :id";
-        // $this->db->query($sql, [
-        //     "id" => $user->getId(),
-        //     "email" => $user->getEmail(),
-        //     "pseudo" => $user->getPseudo(),
-        //     "password" => $user->getPassword(),
-        // ]);
     }
 }

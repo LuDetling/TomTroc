@@ -39,7 +39,7 @@ class BookManager extends AbstractEntityManager
         return null;
     }
 
-    public function getBookByUserId(int $id)
+    public function getBookByUserId(int $id): array
     {
         $sql = "SELECT * FROM book WHERE userId = :userId";
         $result = $this->db->query($sql, ['userId' => $id]);
@@ -48,5 +48,18 @@ class BookManager extends AbstractEntityManager
             $books[] = new Book($book);
         }
         return $books;
+    }
+
+    public function editBook(Book $book): void
+    {
+        $sql = "UPDATE book SET title = :title, author = :author, description = :description, disponibility = :disponibility, img = :img WHERE id = :id";
+        $this->db->query($sql, [
+            "id" => $book->getId(),
+            "title" => htmlspecialchars($book->getTitle()),
+            "author" => htmlspecialchars($book->getAuthor()),
+            "description" => htmlspecialchars($book->getDescription()),
+            "disponibility" => htmlspecialchars($book->getDisponibility()),
+            "img" => $book->getImg(),
+        ]);
     }
 }
