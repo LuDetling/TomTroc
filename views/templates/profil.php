@@ -6,20 +6,20 @@
         <h1>Mon compte</h1>
         <div class="top-content-profil">
 
-            <div class="profil">
-                <img src="images/tristana.png" alt="photo de profile">
-                <input type="file" id="avatar" value="modifier" name="avatar" accept="image/png, image/jpeg">
-                <label for="avatar" class="avatar">modifier</label>
-                <div class="trait"></div>
-                <h2><?= $user->pseudo ?></h2>
-                <div class="date-account">Membre depuis 1 an</div>
-                <h3>BIBLIOTHEQUE</h3>
-                <div class="count-books"><?= count($books) ?> livres</div>
-            </div>
-            <div class="content-edit-profil">
-                <div class="edit-profil">
-                    <h3>Vos informations personnelles</h3>
-                    <form action="index.php?action=profil" method="POST">
+            <form action="index.php?action=profil" method="POST" enctype="multipart/form-data">
+                <div class="profil">
+                    <img src="upload/avatar/<?= $user->avatar ? $user->avatar : null ?>" alt="photo de profile">
+                    <input type="file" id="avatar" value="modifier" name="avatar" accept="image/png, image/jpeg">
+                    <label for="avatar" class="avatar">modifier</label>
+                    <div class="trait"></div>
+                    <h2><?= $user->pseudo ?></h2>
+                    <div class="date-account">Membre depuis <?= Utils::convertDateToFrenchFormat($user->dateCreation) ?></div>
+                    <h3>BIBLIOTHEQUE</h3>
+                    <div class="count-books"><?= count($books) ?> livres</div>
+                </div>
+                <div class="content-edit-profil">
+                    <div class="edit-profil">
+                        <h3>Vos informations personnelles</h3>
                         <div>
                             <label for="email">Adresse email</label>
                             <input type="text" name="email" id="email" value="<?= $user->email ?>">
@@ -34,9 +34,9 @@
                         </div>
                         <?= isset($_SESSION["error"]) ? "<p>" . $_SESSION["error"] . "</p>" : null ?>
                         <button type="submit" class="button-border-green button">Enregistrer</button>
-                    </form>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
         <div class="my-books">
             <table>

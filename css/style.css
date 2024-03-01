@@ -542,13 +542,13 @@ footer a:hover {
     margin: 0;
 }
 
-.top-content-profil {
+.top-content-profil > form {
     display: flex;
     justify-content: space-between;
     gap: 33px;
 }
 
-.top-content-profil > div {
+.top-content-profil > form > div {
     background-color: white;
     border-radius: 20px;
     width: 50%;

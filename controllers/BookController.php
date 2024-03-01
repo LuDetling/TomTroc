@@ -76,6 +76,8 @@ class BookController
                         "img" => $file,
                     ]);
                     unset($_SESSION["errorImg"]);
+                    unlink("./upload/books/" . $book->getImg());
+
                     $bookManager->editBook($editBook);
                     Utils::redirect("showBook&id=" . $book->getId());
                 } else {

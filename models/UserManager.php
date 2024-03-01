@@ -3,7 +3,6 @@
 class UserManager extends AbstractEntityManager
 {
     public function createUser(User $user): bool
-    // public function newUser(User $user): bool
     {
         //Vérification si le pseudo et email son unique
         //lower
@@ -28,11 +27,12 @@ class UserManager extends AbstractEntityManager
 
         //Si le tableau users est vide alors tout est unique on peut ajouter un nouvel utilisateur
         if (!$users) {
-            $sql = "INSERT INTO user (pseudo, email, password, date_creation) VALUES (:pseudo, :email, :password, now())";
+            $sql = "INSERT INTO user (pseudo, email, password, date_creation, avatar) VALUES (:pseudo, :email, :password, now()), :avatar";
             $result = $this->db->query($sql, [
-                "pseudo" => $user->getPseudo(),
-                "email" => $user->getEmail(),
-                "password" => $user->getPassword(),
+                "pseudo" => htmlspecialchars($user->getPseudo()),
+                "email" => htmlspecialchars($user->getEmail()),
+                "password" => htmlspecialchars($user->getPassword()),
+                "avatar" => htmlspecialchars("default-avatar.png"),
             ]);
             return $result->rowCount() > 0;
         }
@@ -70,12 +70,13 @@ class UserManager extends AbstractEntityManager
             $_SESSION["error"] = "Pseudo ou adresse email déjà utilisé !";
             return $user;
         } else {
-            $sql = "UPDATE user SET email = :email, pseudo = :pseudo, password = :password WHERE id = :id";
+            $sql = "UPDATE user SET email = :email, pseudo = :pseudo, password = :password, avatar = :avatar WHERE id = :id";
             $this->db->query($sql, [
                 "id" => $editUser->getId(),
-                "email" => $editUser->getEmail(),
-                "pseudo" => $editUser->getPseudo(),
-                "password" => $editUser->getPassword(),
+                "email" => htmlspecialchars($editUser->getEmail()),
+                "pseudo" => htmlspecialchars($editUser->getPseudo()),
+                "password" => htmlspecialchars($editUser->getPassword()),
+                "avatar" => htmlspecialchars($editUser->getAvatar()),
             ]);
             return $editUser;
         }

@@ -5,13 +5,14 @@
  * directement sans avoir besoin d'instancier un objet Utils.
  * Exemple : Utils::redirect('home'); 
  */
-class Utils {
+class Utils
+{
     /**
      * Convertit une date vers le format de type "Samedi 15 juillet 2023" en francais.
      * @param DateTime $date : la date à convertir.
      * @return string : la date convertie.
      */
-    public static function convertDateToFrenchFormat(DateTime $date) : string
+    public static function convertDateToFrenchFormat(DateTime $date): string
     {
         // Attention, s'il y a un soucis lié à IntlDateFormatter c'est qu'il faut
         // activer l'extention intl_date_formater (ou intl) au niveau du serveur apache. 
@@ -21,13 +22,53 @@ class Utils {
         return $dateFormatter->format($date);
     }
 
+    // public static function savePictures(): void
+    // {
+    //     if (isset($_FILES["img"])) {
+
+    //         $name = $_FILES["img"]["name"];
+    //         $size = $_FILES["img"]["size"];
+    //         $tmpName = $_FILES["img"]["tmp_name"];
+    //         $error = $_FILES["img"]["error"];
+
+    //         $tabExtension = explode('.', $name);
+    //         $extension = strtolower(end($tabExtension));
+    //         $extensions = ["jpg", "png", "jpeg"];
+    //         $maxSize = 4000000;
+
+    //         if (in_array($extension, $extensions) && $size <= $maxSize && $error == 0) {
+
+    //             $uniqueName = uniqid("", true);
+    //             $file = $uniqueName . "." . $extension;
+
+    //             move_uploaded_file($tmpName, './upload/books/' . $file);
+
+    //             // $editBook = new Book([
+    //             //     "id" => $book->getId(),
+    //             //     "title" => $_POST["title"],
+    //             //     "author" => $_POST["author"],
+    //             //     "description" => $_POST["description"],
+    //             //     "disponibility" => $_POST["disponibility"],
+    //             //     "img" => $file,
+    //             // ]);
+    //             // unset($_SESSION["errorImg"]);
+    //             // unlink("./upload/books/" . $book->getImg());
+
+    //             // $bookManager->editBook($editBook);
+    //             // Utils::redirect("showBook&id=" . $book->getId());
+    //         } else {
+    //             $_SESSION["errorImg"] = "Il y a une erreur avec l'image";
+    //         }
+    //     }
+    // }
+
     /**
      * Redirige vers une URL.
      * @param string $action : l'action que l'on veut faire (correspond aux actions dans le routeur).
      * @param array $params : Facultatif, les paramètres de l'action sous la forme ['param1' => 'valeur1', 'param2' => 'valeur2']
      * @return void
      */
-    public static function redirect(string $action, array $params = []) : void
+    public static function redirect(string $action, array $params = []): void
     {
         $url = "index.php?action=$action";
         foreach ($params as $paramName => $paramValue) {
@@ -44,7 +85,7 @@ class Utils {
      * @param string $message : le message à afficher dans la popup.
      * @return string : le code js à insérer dans le bouton.
      */
-    public static function askConfirmation(string $message) : string
+    public static function askConfirmation(string $message): string
     {
         return "onclick=\"return confirm('$message');\"";
     }
@@ -55,7 +96,7 @@ class Utils {
      * @param string $string : la chaine à protéger.
      * @return string : la chaine protégée.
      */
-    public static function format(string $string) : string
+    public static function format(string $string): string
     {
         // Etape 1, on protège le texte avec htmlspecialchars.
         $finalString = htmlspecialchars($string, ENT_QUOTES);
@@ -70,7 +111,7 @@ class Utils {
                 $finalString .= "<p>$line</p>";
             }
         }
-        
+
         return $finalString;
     }
 
@@ -82,9 +123,8 @@ class Utils {
      * @param mixed $defaultValue : la valeur par défaut si la variable n'est pas définie.
      * @return mixed : la valeur de la variable ou la valeur par défaut.
      */
-    public static function request(string $variableName, mixed $defaultValue = null) : mixed
+    public static function request(string $variableName, mixed $defaultValue = null): mixed
     {
         return $_REQUEST[$variableName] ?? $defaultValue;
     }
-
 }
