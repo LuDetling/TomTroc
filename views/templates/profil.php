@@ -38,40 +38,42 @@
                 </div>
             </form>
         </div>
-        <div class="my-books">
-            <table>
-                <thead>
-                    <tr>
-                        <th>PHOTO</th>
-                        <th>TITRE</th>
-                        <th>AUTEUR</th>
-                        <th>DESCRIPTION</th>
-                        <th>DISPONIBILITE</th>
-                        <th>ACTION</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    foreach ($books as $book) {
-                        echo "<tr>";
-                        echo "  <td><img src=upload/books/" . $book->getImg() . " alt='Image du livre " . $book->getTitle() . "'></td>";
-                        echo "  <td class='title'>" . $book->getTitle() . "</td>";
-                        echo "  <td class='author'>" . $book->getAuthor() . "</td>";
-                        echo "  <td><p class='description'> " . $book->getDescription() . "</p></td>";
-                        if ($book->getDisponibility()) {
-                            echo "  <td><div class='disponible'>Disponible</div></td>";
-                        } else {
-                            echo "  <td><div class='indisponible'>non dispo.</div></td>";
+        <?php if (count($books) > 0) { ?>
+            <div class="my-books">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>PHOTO</th>
+                            <th>TITRE</th>
+                            <th>AUTEUR</th>
+                            <th>DESCRIPTION</th>
+                            <th>DISPONIBILITE</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach ($books as $book) {
+                            echo "<tr>";
+                            echo "  <td><img src=upload/books/" . $book->getImg() . " alt='Image du livre " . $book->getTitle() . "'></td>";
+                            echo "  <td class='title'>" . $book->getTitle() . "</td>";
+                            echo "  <td class='author'>" . $book->getAuthor() . "</td>";
+                            echo "  <td><p class='description'> " . $book->getDescription() . "</p></td>";
+                            if ($book->getDisponibility()) {
+                                echo "  <td><div class='disponible'>Disponible</div></td>";
+                            } else {
+                                echo "  <td><div class='indisponible'>non dispo.</div></td>";
+                            }
+                            echo "  <td class='edit-delete'>";
+                            echo "      <a href='index.php?action=editBook&id=" . $book->getId() . "' class='edit'>Éditer</a>";
+                            echo "      <a href='#' class='delete'>Supprimer</a>";
+                            echo "  </td>";
+                            echo "</tr>";
                         }
-                        echo "  <td class='edit-delete'>";
-                        echo "      <a href='index.php?action=editBook&id=" . $book->getId() . "' class='edit'>Éditer</a>";
-                        echo "      <a href='#' class='delete'>Supprimer</a>";
-                        echo "  </td>";
-                        echo "</tr>";
-                    }
-                    ?>
-                </tbody>
-            </table>
-        </div>
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        <?php } ?>
     </div>
 </section>

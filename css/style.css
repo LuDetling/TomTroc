@@ -31,6 +31,9 @@
 
 body {
     margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 h1,
@@ -159,6 +162,7 @@ header {
 footer {
     text-align: right;
     padding: 22px 6px;
+    margin-top: auto;
 }
 footer a {
     margin: 20px;
@@ -627,7 +631,7 @@ label {
     margin-bottom: 10px;
 }
 
-input,
+input:not(.button),
 select {
     box-sizing: border-box;
     width: 100%;
@@ -801,4 +805,70 @@ table tr:last-child td:last-child {
 
 .right-edit-book #disponibility {
     margin-bottom: 44px;
+}
+
+.content-messagerie {
+    max-width: 1141px;
+    margin: auto;
+    display: flex;
+}
+
+.left-messagerie {
+    background-color: #faf9f7;
+    max-width: 308px;
+}
+
+.left-messagerie h1 {
+    padding: 55px 34px 27px;
+    margin: 0;
+}
+
+.left-messagerie ul {
+    padding: 0;
+}
+
+.left-messagerie li {
+    padding: 18px 34px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.left-messagerie img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.left-messagerie .active-messagerie {
+    background-color: #ffffff;
+}
+
+.left-messagerie .name-hour {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.left-messagerie .name-hour div:first-child {
+    font-size: 14px;
+    color: var(--gris-fonce);
+}
+.left-messagerie .name-hour div:last-child {
+    font-size: 12px;
+    color: var(--gris-fonce);
+}
+
+.left-messagerie .content-contact {
+    width: calc(100% - 60px);
+}
+
+.left-messagerie .summary p {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 0;
+    font-size: 12px;
+    color: var(--gris-texte);
 }

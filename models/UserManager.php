@@ -27,12 +27,11 @@ class UserManager extends AbstractEntityManager
 
         //Si le tableau users est vide alors tout est unique on peut ajouter un nouvel utilisateur
         if (!$users) {
-            $sql = "INSERT INTO user (pseudo, email, password, date_creation, avatar) VALUES (:pseudo, :email, :password, now()), :avatar";
+            $sql = "INSERT INTO user (pseudo, email, password, date_creation) VALUES (:pseudo, :email, :password, now())";
             $result = $this->db->query($sql, [
                 "pseudo" => htmlspecialchars($user->getPseudo()),
                 "email" => htmlspecialchars($user->getEmail()),
                 "password" => htmlspecialchars($user->getPassword()),
-                "avatar" => htmlspecialchars("default-avatar.png"),
             ]);
             return $result->rowCount() > 0;
         }

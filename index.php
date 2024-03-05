@@ -48,6 +48,10 @@ try {
             $userController = new UserController();
             $userController->showProfil();
             break;
+        case "messagerie":
+            $messagerieController = new MessagerieController();
+            $messagerieController->showYourMessages();
+            break;
         default:
             throw new Exception("La page demandée n'existe pas.");
     }
