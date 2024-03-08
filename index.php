@@ -45,12 +45,16 @@ try {
             Utils::redirect("home");
             break;
         case "profil":
+            if (!isset($_SESSION["user"]))
+                Utils::redirect("connexion");
             $userController = new UserController();
             $userController->showProfil();
             break;
         case "messagerie":
+            if (!isset($_SESSION["user"]))
+                Utils::redirect("connexion");
             $messagerieController = new MessagerieController();
-            $messagerieController->showYourMessages();
+            $messagerieController->showAllUserWhoChat();
             break;
         default:
             throw new Exception("La page demandée n'existe pas.");

@@ -28,15 +28,16 @@
                 <a href="index.php?action=showBooks" class="<?= isset($_GET["action"]) && !empty($_GET["action"] == "showBooks" || $_GET["action"] == "showBook") ? 'active' : "" ?>">Nos livres à l'échange</a>
             </div>
             <div class="right-nav">
-                <a href="index.php?action=messagerie" class="<?= isset($_GET["action"]) && !empty($_GET["action"] == "messagerie") ? 'active' : "" ?>">Messagerie</a>
                 <?php if (isset($_SESSION["user"])) {
                 ?>
+                    <a href="index.php?action=messagerie" class="<?= isset($_GET["action"]) && !empty($_GET["action"] == "messagerie") ? 'active' : "" ?>">Messagerie</a>
                     <a href="index.php?action=profil" class="<?= isset($_GET["action"]) && !empty($_GET["action"] == "account") ? 'active' : "" ?>">Mon compte</a>
                     <a href='index.php?action=logout'>Déconnexion</a>
                 <?php
                 } else {
                 ?>
                     <a href="index.php?action=connexion" class="<?= isset($_GET["action"]) && !empty($_GET["action"] == "connexion") ? 'active' : "" ?>">Connexion</a>
+                    <a href="index.php?action=inscription" class="<?= isset($_GET["action"]) && !empty($_GET["action"] == "inscription") ? 'active' : "" ?>">Inscription</a>
                 <?php
                 }
                 ?>

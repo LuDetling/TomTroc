@@ -80,4 +80,15 @@ class UserManager extends AbstractEntityManager
             return $editUser;
         }
     }
+
+    public function findUserTo(int $userId): ?User
+    {
+        $sql = "SELECT id, avatar, pseudo FROM user WHERE id = :id";
+        $result = $this->db->query($sql, ["id" => $userId]);
+        $userFrom = $result->fetch();
+        if ($userFrom) {
+            return new User($userFrom);
+        }
+        return null;
+    }
 }

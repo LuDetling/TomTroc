@@ -21,6 +21,18 @@ class Utils
         $dateFormatter->setPattern('EEEE d MMMM Y');
         return $dateFormatter->format($date);
     }
+    public static function convertToHour(DateTime $date): string
+    {
+        $dateFormatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::FULL, IntlDateFormatter::FULL);
+        $dateFormatter->setPattern('H:mm');
+        return $dateFormatter->format($date);
+    }
+    public static function convertDateHour(DateTime $date): string
+    {
+        $dateFormatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::FULL, IntlDateFormatter::FULL);
+        $dateFormatter->setPattern('dd.MM HH:mm');
+        return $dateFormatter->format($date);
+    }
 
     // public static function savePictures(): void
     // {
