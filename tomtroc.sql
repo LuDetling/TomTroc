@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 01 mars 2024 à 05:10
--- Version du serveur : 8.2.0
--- Version de PHP : 8.2.13
+-- Généré le : ven. 08 mars 2024 à 06:45
+-- Version du serveur : 8.0.31
+-- Version de PHP : 8.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -61,19 +61,13 @@ DROP TABLE IF EXISTS `messagerie`;
 CREATE TABLE IF NOT EXISTS `messagerie` (
   `id` int NOT NULL AUTO_INCREMENT,
   `message` text NOT NULL,
-  `pseudo_to` varchar(255) NOT NULL,
-  `pseudo_from` varchar(255) NOT NULL,
+  `user_to` int NOT NULL,
+  `user_from` int NOT NULL,
   `date_send` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `pseudo_from` (`pseudo_from`)
+  KEY `pseudo_from` (`user_from`),
+  KEY `user_to` (`user_to`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Déchargement des données de la table `messagerie`
---
-
-INSERT INTO `messagerie` (`id`, `message`, `pseudo_to`, `pseudo_from`, `date_send`) VALUES
-(1, 'Voici un message de Lucas pour Pipo', 'Lucas', 'Pipo', '2024-03-01 05:04:32');
 
 -- --------------------------------------------------------
 
@@ -88,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` varchar(250) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `password` varchar(255) NOT NULL,
   `date_creation` datetime NOT NULL,
-  `avatar` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'default-avatar.png',
   PRIMARY KEY (`id`),
   UNIQUE KEY `pseudo` (`pseudo`),
   UNIQUE KEY `email` (`email`)
@@ -113,6 +107,13 @@ INSERT INTO `user` (`id`, `pseudo`, `email`, `password`, `date_creation`, `avata
 --
 ALTER TABLE `book`
   ADD CONSTRAINT `userId` FOREIGN KEY (`userId`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Contraintes pour la table `messagerie`
+--
+ALTER TABLE `messagerie`
+  ADD CONSTRAINT `messagerie_ibfk_1` FOREIGN KEY (`user_from`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `messagerie_ibfk_2` FOREIGN KEY (`user_to`) REFERENCES `user` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
