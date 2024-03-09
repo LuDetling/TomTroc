@@ -42,10 +42,13 @@
                         <div><?= $userTo->getPseudo() ?></div>
                     </div>
                     <div class="discussion">
-                        <?php foreach ($messages as $message) { ?>
+                        <?php foreach ($messages as $key => $message) {
+                            // var_dump($messages[$key + 1]);
+                        ?>
+                            <?php if ($message["user_from"] == $userTo->getId()) ?>
                             <div class="content-message <?= $message["user_from"] == $userTo->getId() ? 'user-from' : 'user-to' ?>">
                                 <div class="top-message">
-                                    <?php if ($message["user_from"] == $userTo->getId()) {
+                                    <?php if ($message["user_from"] == $userTo->getId() && (isset($messages[$key + 1]) && $messages[$key + 1]["user_from"] != $message["user_from"]) || $messages[$key + 1] == null) {
                                     ?>
                                         <img src="upload/avatar/<?= $message["avatar"] ?>" alt="">
                                     <?php } ?>
@@ -53,7 +56,9 @@
                                 </div>
                                 <p><?= $message["message"] ?></p>
                             </div>
-                        <?php } ?>
+                        <?php
+                        }
+                        ?>
                     </div>
                     <form action="index.php?action=messagerie&idUserTo=<?= $userTo->getId() ?>" class="bottom-discussion" method="POST">
                         <textarea type="text" placeholder="Tapez votre message ici" name="message"></textarea>

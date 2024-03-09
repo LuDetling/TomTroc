@@ -2,6 +2,19 @@
 
 class UserController
 {
+    public function showProfilPublic(): void
+    {
+        $userId = Utils::request("userId", -1);
+        $UserManager = new UserManager();
+        $profilPublic = $UserManager->showProfilPublic($userId);
+        if (!$profilPublic) {
+            Utils::redirect("home");
+        }
+
+        $view = new View('ProfilPublic');
+        $view->render("profilPublic", ["profilPublic" => $profilPublic]);
+    }
+
     public function showProfil(): void
     {
         $user = unserialize($_SESSION["user"]);

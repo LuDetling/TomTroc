@@ -56,6 +56,10 @@ try {
             $messagerieController = new MessagerieController();
             $messagerieController->showAllUserWhoChat();
             break;
+        case "profilPublic":
+            $userController = new UserController();
+            $userController->showProfilPublic();
+            break;
         default:
             throw new Exception("La page demandée n'existe pas.");
     }
