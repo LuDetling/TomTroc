@@ -94,7 +94,7 @@ class UserManager extends AbstractEntityManager
 
     public function showProfilPublic(int $userId): array
     {
-        $sql = "SELECT * FROM book b JOIN user u ON b.userId = u.id WHERE b.userId = :userId";
+        $sql = "SELECT b.* , u.avatar, u.pseudo, u.date_creation FROM book b JOIN user u ON b.userId = u.id WHERE b.userId = :userId";
         $results = $this->db->query($sql, ["userId" => $userId]);
         $profils = [];
         foreach ($results as $row) {

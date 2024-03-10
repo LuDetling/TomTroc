@@ -1,4 +1,5 @@
 <?php
+var_dump($profilPublic);
 ?>
 
 <section class="background-profil-public">
@@ -30,22 +31,22 @@
                         foreach ($profilPublic as $book) {
                         ?>
                             <tr>
-                                <a href="index.php?action=showBook&id=<?= $book["id"] ?>">
-                                    <td>
+                                <td>
+                                    <a href="index.php?action=showBook&id=<?= $book["id"] ?>">
                                         <img src="upload/books/<?= $book["img"] ?>" alt="image du livre <?= $book["title"] ?>">
-                                    </td>
-                                    <td class="title">
-                                        <?= $book["title"] ?>
-                                    </td>
-                                    <td>
-                                        <?= $book["author"] ?>
-                                    </td>
-                                    <td>
-                                        <p class='description'>
-                                            <?= $book["description"] ?>
-                                        </p>
-                                    </td>
-                                </a>
+                                    </a>
+                                </td>
+                                <td class="title">
+                                    <?= $book["title"] ?>
+                                </td>
+                                <td>
+                                    <?= $book["author"] ?>
+                                </td>
+                                <td>
+                                    <p class='description'>
+                                        <?= $book["description"] ?>
+                                    </p>
+                                </td>
                             </tr>
                         <?php
                         }
