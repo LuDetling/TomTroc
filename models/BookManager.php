@@ -5,12 +5,12 @@ class BookManager extends AbstractEntityManager
     public function getAllBooks(): array
     {
         // faire une pagination à 16 books par page
-        $sql = "SELECT * FROM book ORDER BY id DESC";
+        $sql = "SELECT b.*, u.pseudo FROM book b JOIN user u ON b.userId = u.id ORDER BY id DESC";
         $result = $this->db->query($sql);
         $books = [];
 
         foreach ($result as $row) {
-            $books[] = new Book($row);
+            $books[] = $row;
         }
 
         return $books;
@@ -18,12 +18,12 @@ class BookManager extends AbstractEntityManager
 
     public function getLastedBooks(): array
     {
-        $sql = "SELECT * FROM book ORDER BY id DESC LIMIT 4";
+        $sql = "SELECT b.*, u.pseudo FROM book b JOIN user u ON b.userId = u.id ORDER BY id DESC LIMIT 4";
         $result = $this->db->query($sql);
         $lastsbooks = [];
 
         foreach ($result as $row) {
-            $lastsbooks[] = new Book($row);
+            $lastsbooks[] = $row;
         }
         return $lastsbooks;
     }

@@ -43,12 +43,11 @@
                     </div>
                     <div class="discussion">
                         <?php foreach ($messages as $key => $message) {
-                            // var_dump($messages[$key + 1]);
                         ?>
                             <?php if ($message["user_from"] == $userTo->getId()) ?>
                             <div class="content-message <?= $message["user_from"] == $userTo->getId() ? 'user-from' : 'user-to' ?>">
                                 <div class="top-message">
-                                    <?php if ($message["user_from"] == $userTo->getId() && (isset($messages[$key + 1]) && $messages[$key + 1]["user_from"] != $message["user_from"]) || $messages[$key + 1] == null) {
+                                    <?php if ($message["user_from"] == $userTo->getId() && (empty($messages[$key + 1]) || $message["user_from"] != $messages[$key + 1]["user_from"])) {
                                     ?>
                                         <img src="upload/avatar/<?= $message["avatar"] ?>" alt="">
                                     <?php } ?>

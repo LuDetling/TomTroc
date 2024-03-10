@@ -359,12 +359,13 @@ footer a:hover {
     margin-bottom: 72px;
 }
 
-.title-search input {
+.our-books .title-search input {
     color: var(--gris-texte);
     font-size: 14px;
     padding: 1rem 12px;
     border-radius: 6px;
     border: 1px solid #f0f0f0;
+    margin-bottom: 0;
 }
 
 /* DETAIL BOOK */

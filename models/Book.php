@@ -7,6 +7,17 @@ class Book extends AbstractEntity
     private string $img;
     private string $description;
     private bool $disponibility;
+    private int $userId;
+
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    public function setUserId(int $userId): void
+    {
+        $this->userId = $userId;
+    }
 
 
     /**

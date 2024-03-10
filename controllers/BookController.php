@@ -6,6 +6,7 @@ class BookController
     public function showHome(): void
     {
         $bookManager = new BookManager();
+
         $lastBooks = $bookManager->getLastedBooks();
 
         $view = new View("Home");
@@ -26,14 +27,23 @@ class BookController
         $id = Utils::request('id', -1);
 
         $bookManager = new BookManager();
+        $userManager = new userManager();
+        $sessionUser = null;
+
         $book = $bookManager->getBookById($id);
 
         if (!$book) {
             throw new Exception("L'article demandé n'existe pas.");
         }
 
+        $user = $userManager->findUserTo($book->getUserId());
+        if (isset($_SESSION["user"])) {
+            $sessionUser = unserialize($_SESSION["user"]);
+        }
+
+
         $view = new View($book->getTitle());
-        $view->render('detailBook', ['book' => $book]);
+        $view->render('detailBook', ['book' => $book, "user" => $user, "sessionUser" => $sessionUser]);
     }
 
     public function editBook(): void
@@ -60,6 +70,8 @@ class BookController
                 $extensions = ["jpg", "png", "jpeg"];
                 $maxSize = 4000000;
 
+                $file = $book->getImg();
+
                 if (in_array($extension, $extensions) && $size <= $maxSize && $error == 0) {
 
                     $uniqueName = uniqid("", true);
@@ -67,22 +79,23 @@ class BookController
 
                     move_uploaded_file($tmpName, './upload/books/' . $file);
 
-                    $editBook = new Book([
-                        "id" => $book->getId(),
-                        "title" => $_POST["title"],
-                        "author" => $_POST["author"],
-                        "description" => $_POST["description"],
-                        "disponibility" => $_POST["disponibility"],
-                        "img" => $file,
-                    ]);
                     unset($_SESSION["errorImg"]);
                     unlink("./upload/books/" . $book->getImg());
-
-                    $bookManager->editBook($editBook);
-                    Utils::redirect("showBook&id=" . $book->getId());
                 } else {
                     $_SESSION["errorImg"] = "Il y a une erreur avec l'image";
                 }
+
+                $editBook = new Book([
+                    "id" => $book->getId(),
+                    "title" => $_POST["title"],
+                    "author" => $_POST["author"],
+                    "description" => $_POST["description"],
+                    "disponibility" => $_POST["disponibility"],
+                    "img" => $file,
+                ]);
+
+                $bookManager->editBook($editBook);
+                Utils::redirect("showBook&id=" . $book->getId());
             }
         }
 
