@@ -11,13 +11,13 @@ class MessagerieController
         $messages = null;
         //user qu'on discute
         $userTo = null;
+        $idUserTo = Utils::request('idUserTo', -1);
 
         $messagerieManager = new MessagerieManager();
         $userManager = new UserManager();
 
         $usersChat = $messagerieManager->showAllUserWhoChat($userFrom->getId());
 
-        $idUserTo = Utils::request('idUserTo', -1);
 
         if ($idUserTo > 0) {
 

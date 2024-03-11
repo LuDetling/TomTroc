@@ -9,10 +9,10 @@
                 foreach ($usersChat as $userChat) {
                     if (isset($userTo)) {
                 ?>
-                        <li class="<?= $userChat["user_from"] == $userTo->getId() ? 'active-messagerie' : null ?>">
+                        <li class="<?= $userChat["user_to"] == $userTo->getId() ? 'active-messagerie' : null ?>">
                         <?php } else { ?>
                         <li><?php } ?>
-                        <a href="index.php?action=messagerie&idUserTo=<?= $userChat["user_from"] ?>">
+                        <a href="index.php?action=messagerie&idUserTo=<?= $userChat["user_to"] ?>">
                             <img src="upload/avatar/<?= $userChat["avatar"] ?>" alt="">
                             <div class="content-contact">
                                 <div class="name-hour">

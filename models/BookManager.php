@@ -62,4 +62,17 @@ class BookManager extends AbstractEntityManager
             "img" => $book->getImg(),
         ]);
     }
+
+    public function addBook(Book $book): void
+    {
+        $sql = "INSERT INTO book (title, author, description, img, disponibility, userId) VALUES (:title, :author, :description, :img, :disponibility, :userId)";
+        $this->db->query($sql, [
+            "userId" => $book->getUserId(),
+            "title" => $book->getTitle(),
+            "author" => $book->getAuthor(),
+            "description" => $book->getDescription(),
+            "img" => $book->getImg(),
+            "disponibility" => $book->getDisponibility(),
+        ]);
+    }
 }

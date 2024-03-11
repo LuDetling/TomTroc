@@ -3,10 +3,10 @@
 class MessagerieManager extends AbstractEntityManager
 {
 
-    public function showAllUserWhoChat(int $userTo): array
+    public function showAllUserWhoChat(int $userFrom): array
     {
-        $sql = "SELECT m.*, u.avatar, u.pseudo FROM messagerie m JOIN user u ON m.user_from = u.id WHERE m.user_to = :userTo GROUP BY m.user_from ORDER BY m.id DESC";
-        $result = $this->db->query($sql, ["userTo" => $userTo]);
+        $sql = "SELECT m.*, u.avatar, u.pseudo FROM messagerie m JOIN user u ON m.user_to = u.id WHERE m.user_from = :userFrom GROUP BY m.user_to ORDER BY m.id DESC";
+        $result = $this->db->query($sql, ["userFrom" => $userFrom]);
         $usersChat = [];
         foreach ($result as $userChat) {
             $usersChat[] = $userChat;
