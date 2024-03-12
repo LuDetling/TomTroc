@@ -152,4 +152,22 @@ class BookController
         $view = new View("addBook");
         $view->render('addBook');
     }
+
+    public function deleteBook(): void
+    {
+        $id = Utils::request('id', -1);
+        $user = unserialize($_SESSION["user"]);
+
+        $bookManager = new BookManager();
+
+        $book = $bookManager->getBookById($id);
+
+        if (isset($book) && $book->getUserId() == $user->getId()) {
+            $bookManager->deleteBook($id);
+        } else {
+            throw new Exception("Vous n'êtes pas autorisé à supprimer ce livre.");
+        }
+
+        Utils::redirect("profil");
+    }
 }

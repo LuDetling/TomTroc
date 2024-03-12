@@ -76,4 +76,10 @@ class BookManager extends AbstractEntityManager
         ]);
         return $this->db->getPDO()->lastInsertId();
     }
+
+    public function deleteBook(int $id): void
+    {
+        $sql = "DELETE FROM book WHERE id = :id";
+        $this->db->query($sql, ["id" => $id]);
+    }
 }

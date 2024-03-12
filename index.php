@@ -35,6 +35,10 @@ try {
             $bookController = new BookController();
             $bookController->addBook();
             break;
+        case 'deleteBook':
+            $bookController = new BookController();
+            $bookController->deleteBook();
+            break;
         case 'inscription':
             $adminController = new AdminController();
             $adminController->inscription();

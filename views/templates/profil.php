@@ -66,7 +66,7 @@
                             }
                             echo "  <td class='edit-delete'>";
                             echo "      <a href='index.php?action=editBook&id=" . $book->getId() . "' class='edit'>Éditer</a>";
-                            echo "      <a href='#' class='delete'>Supprimer</a>";
+                            echo "      <a href='index.php?action=deleteBook&id=" . $book->getId() . "' class='delete'>Supprimer</a>";
                             echo "  </td>";
                             echo "</tr>";
                         }
