@@ -13,10 +13,10 @@
             <div class="title-part">DESCRIPTION</div>
             <p class="description"><?= $book->getDescription() ?></p>
             <div class="title-part">Propriétaire</div>
-            <div class="content-owner">
+            <a href="index.php?action=<?= isset($sessionUser) && $sessionUser->getId() != $user->getId() ? "profilPublic&userId=" . $user->getId() : "profil" ?>" class="content-owner">
                 <img src="upload/avatar/<?= $user->getAvatar() ?>" alt="image du propriétaire">
                 <div><?= $user->getPseudo() ?></div>
-            </div>
+            </a>
             <?php
             if (isset($sessionUser) && $sessionUser->getId() != $user->getId()) {
             ?>
@@ -25,6 +25,10 @@
             } else if (!isset($sessionUser)) {
             ?>
                 <a href="index.php?action=connexion">Se connecter pour envoyer un message</a>
+            <?php
+            } else {
+            ?>
+                <a href="index.php?action=editBook&id=<?= $book->getId() ?>" class="button button-green">Modifier</a>
             <?php
             }
             ?>

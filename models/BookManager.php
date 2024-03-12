@@ -59,20 +59,21 @@ class BookManager extends AbstractEntityManager
             "author" => htmlspecialchars($book->getAuthor()),
             "description" => htmlspecialchars($book->getDescription()),
             "disponibility" => htmlspecialchars($book->getDisponibility()),
-            "img" => $book->getImg(),
+            "img" => htmlspecialchars($book->getImg()),
         ]);
     }
 
-    public function addBook(Book $book): void
+    public function addBook(Book $book): int
     {
         $sql = "INSERT INTO book (title, author, description, img, disponibility, userId) VALUES (:title, :author, :description, :img, :disponibility, :userId)";
-        $this->db->query($sql, [
+        $result = $this->db->query($sql, [
             "userId" => $book->getUserId(),
-            "title" => $book->getTitle(),
-            "author" => $book->getAuthor(),
-            "description" => $book->getDescription(),
-            "img" => $book->getImg(),
-            "disponibility" => $book->getDisponibility(),
+            "title" => htmlspecialchars($book->getTitle()),
+            "author" => htmlspecialchars($book->getAuthor()),
+            "description" => htmlspecialchars($book->getDescription()),
+            "img" => htmlspecialchars($book->getImg()),
+            "disponibility" => htmlspecialchars($book->getDisponibility()),
         ]);
+        return $this->db->getPDO()->lastInsertId();
     }
 }

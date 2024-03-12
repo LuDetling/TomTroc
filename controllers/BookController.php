@@ -135,7 +135,7 @@ class BookController
                     $_SESSION["errorImg"] = "Il y a une erreur avec l'image";
                 }
 
-                $editBook = new Book([
+                $addBook = new Book([
                     "userId" => $userId,
                     "title" => $_POST["title"],
                     "author" => $_POST["author"],
@@ -144,8 +144,8 @@ class BookController
                     "img" => $file,
                 ]);
 
-                $bookManager->addBook($editBook);
-                // Utils::redirect("showBook&id=" . $book->getId());
+                $idNewBook = $bookManager->addBook($addBook);
+                Utils::redirect("showBook&id=" . $idNewBook);
             }
         }
 

@@ -11,7 +11,7 @@
                 <label>Photo</label>
                 <div class="edit-img">
                     <input type="file" value="modifier" id="img" name="img" accept=".jpeg, .jpg, .png">
-                    <label for="img" class="edit-image">Modifier la photo</label>
+                    <label for="img" class="edit-image">Ajouter une photo</label>
                 </div>
                 <?= isset($_SESSION["errorImg"]) ? "<p>" . $_SESSION["errorImg"] . "</p>" : null ?>
             </div>
@@ -22,7 +22,7 @@
                 </div>
                 <div class="edit-author">
                     <label for="author">Auteur</label>
-                    <input type="text" id="author" name="author" value="Nom de l'auteur">
+                    <input type="text" id="author" name="author" placeholder="Nom de l'auteur">
                 </div>
                 <div class="edit-description">
                     <label for="description">Description</label>

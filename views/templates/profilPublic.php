@@ -1,5 +1,4 @@
 <?php
-var_dump($profilPublic);
 ?>
 
 <section class="background-profil-public">

@@ -27,6 +27,9 @@
                 <a href="index.php?action=home" class="<?= empty($_GET) || (isset($_GET["action"]) && !empty($_GET["action"] == "home")) ? 'active' : "" ?>">Accueil</a>
                 <a href="index.php?action=showBooks" class="<?= isset($_GET["action"]) && !empty($_GET["action"] == "showBooks" || $_GET["action"] == "showBook") ? 'active' : "" ?>">Nos livres à l'échange</a>
             </div>
+            <?php if (isset($_SESSION["user"])) { ?>
+                <a href='index.php?action=addBook' class="<?= isset($_GET["action"]) && !empty($_GET["action"] == "addBook") ? 'active' : "" ?> add-book">+</a>
+            <?php } ?>
             <div class="right-nav">
                 <?php if (isset($_SESSION["user"])) {
                 ?>
