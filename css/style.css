@@ -233,6 +233,7 @@ footer a:hover {
     border-bottom-right-radius: 10px;
     text-decoration: none;
     display: block;
+    position: relative;
 }
 
 .card-book img {
@@ -240,6 +241,17 @@ footer a:hover {
     height: 200px;
     object-fit: cover;
     display: block;
+}
+
+.card-book .disponibility {
+    position: absolute;
+    top: 16px;
+    right: 11.88px;
+    color: white;
+    font-size: 8.88px;
+    padding: 3.7px 13.31px;
+    background-color: #c56d6d;
+    border-radius: 30px;
 }
 
 .text-book {
