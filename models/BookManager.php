@@ -4,8 +4,20 @@ class BookManager extends AbstractEntityManager
 {
     public function getAllBooks(): array
     {
-        // faire une pagination à 16 books par page
-        $sql = "SELECT b.*, u.pseudo FROM book b JOIN user u ON b.userId = u.id ORDER BY id DESC";
+        $sql = "SELECT b.*, u.pseudo FROM book b JOIN user u ON b.userId = u.id ORDER BY b.id DESC";
+        $result = $this->db->query($sql);
+        $books = [];
+
+        foreach ($result as $row) {
+            $books[] = $row;
+        }
+
+        return $books;
+    }
+
+    public function getBooksBySearch(string $value): array
+    {
+        $sql = "SELECT b.*, u.pseudo FROM book b JOIN user u ON b.userId = u.id WHERE (b.title LIKE '%$value%' OR b.author LIKE '%$value%' OR b.description LIKE '%$value%' OR u.pseudo LIKE '%$value%') ORDER BY b.id DESC";
         $result = $this->db->query($sql);
         $books = [];
 

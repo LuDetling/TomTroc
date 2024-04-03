@@ -17,6 +17,11 @@ class BookController
     {
         $bookManager = new BookManager();
         $books = $bookManager->getAllBooks();
+
+        if (isset($_POST["search"])) {
+            $books = $bookManager->getBooksBySearch($_POST["search"]);
+        }
+
         $view = new View('ShowBooks');
         $view->render('ourBooks', ['books' => $books]);
     }
