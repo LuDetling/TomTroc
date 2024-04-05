@@ -10,7 +10,7 @@
             <div class="left-edit-book">
                 <label>Photo</label>
                 <div class="edit-img">
-                    <input type="file" value="modifier" id="img" name="img" accept=".jpeg, .jpg, .png">
+                    <input type="file" id="img" name="img" accept=".jpeg, .jpg, .png">
                     <label for="img" class="edit-image">Ajouter une photo</label>
                 </div>
                 <?= isset($_SESSION["errorImg"]) ? "<p>" . $_SESSION["errorImg"] . "</p>" : null ?>

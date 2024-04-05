@@ -9,7 +9,7 @@
             <form action="index.php?action=profil" method="POST" enctype="multipart/form-data">
                 <div class="profil">
                     <img src="upload/avatar/<?= $user->avatar ? $user->avatar : null ?>" alt="photo de profile">
-                    <input type="file" id="avatar" value="modifier" name="avatar" accept="image/png, image/jpeg">
+                    <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
                     <label for="avatar" class="avatar">modifier</label>
                     <div class="trait"></div>
                     <h2><?= $user->pseudo ?></h2>

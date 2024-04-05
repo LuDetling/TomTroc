@@ -11,7 +11,7 @@
                 <label>Photo</label>
                 <img src="upload/books/<?= $book->getImg() ?>" alt="Image de <?= $book->getTitle() ?>">
                 <div class="edit-img">
-                    <input type="file" value="modifier" id="img" name="img" accept=".jpeg, .jpg, .png">
+                    <input type="file" id="img" name="img" accept=".jpeg, .jpg, .png">
                     <label for="img" class="edit-image">Modifier la photo</label>
                 </div>
                 <?= isset($_SESSION["errorImg"]) ? "<p>" . $_SESSION["errorImg"] . "</p>" : null ?>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="edit-description">
                     <label for="description">Description</label>
-                    <textarea type="text" id="description" name="description"><?= $book->getDescription() ?>
+                    <textarea id="description" name="description"><?= $book->getDescription() ?>
                     </textarea>
                 </div>
                 <div class="edit-disponibility">

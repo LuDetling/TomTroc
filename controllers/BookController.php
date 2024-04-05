@@ -29,11 +29,15 @@ class BookController
     public function showBook(): void
     {
 
-        $id = Utils::request('id', -1);
+        $id = (int) Utils::request('id', -1);
 
         $bookManager = new BookManager();
         $userManager = new userManager();
         $sessionUser = null;
+
+        if (!is_int($id)) {
+            throw new Exception("L'article demandé n'existe pas.");
+        }
 
         $book = $bookManager->getBookById($id);
 

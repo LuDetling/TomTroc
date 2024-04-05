@@ -18,5 +18,5 @@
             <div class="connexion">Pas de compte ? <a href="index.php?action=inscription">Inscrivez-vous</a></div>
         </div>
     </div>
-    <img src="/tomtroc/images/marialaura-gionfriddo-50G3FvyQxX0-unsplash 1.png" alt="image inscription">
+    <img src="/tomtroc/images/marialaura-gionfriddo-50G3FvyQxX0-unsplash.png" alt="image inscription">
 </section>

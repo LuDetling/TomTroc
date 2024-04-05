@@ -2,10 +2,10 @@
     <div class="left-top-home">
         <h1>Rejoignez nos lecteurs passionnés</h1>
         <p>Donnez une nouvelle vie à vos livres en les échangeant avec d'autres amoureux de la lecture. Nous croyons en la magie du partage de connaissances et d'histoires à travers les livres. </p>
-        <button class="button button-green">Découvrir</button>
+        <a href="index.php?action=showBooks" class="button button-green">Découvrir</a>
     </div>
     <div class="right-top-home">
-        <img src="/tomtroc/images/hamza-nouasria-KXrvPthkmYQ-unsplash 1.png" alt="Photo d'Hamza Nousaria">
+        <img src="/tomtroc/images/hamza-nouasria-KXrvPthkmYQ-unsplash.png" alt="Photo d'Hamza Nousaria">
         <div>Hamza</div>
     </div>
 </section>
@@ -29,17 +29,17 @@
 
 <section class="how-it-works">
     <h2>Comment ça marche ?</h2>
-    <p>Échanger des livres avec TomTroc c’est simple et </br> amusant ! Suivez ces étapes pour commencer :</p>
+    <p>Échanger des livres avec TomTroc c’est simple et <br> amusant ! Suivez ces étapes pour commencer :</p>
     <div class="card-works">
-        <div>Inscrivez-vous </br> gratuitement sur </br> notre plateforme.</div>
-        <div>Ajoutez les livres que vous </br> souhaitez échanger à </br> votre profil.</div>
-        <div>Parcourez les livres </br> disponibles chez d'autres </br> membres.</div>
-        <div>Proposez un échange et </br> discutez avec d'autres </br> passionnés de lecture.</div>
+        <div>Inscrivez-vous <br> gratuitement sur <br> notre plateforme.</div>
+        <div>Ajoutez les livres que vous <br> souhaitez échanger à <br> votre profil.</div>
+        <div>Parcourez les livres <br> disponibles chez d'autres <br> membres.</div>
+        <div>Proposez un échange et <br> discutez avec d'autres <br> passionnés de lecture.</div>
     </div>
     <a href="index.php?action=showBooks" class="button button-border-green">Voir tous les livres</a>
 </section>
 
-<img src="/tomtroc/images/clay-banks-4uH8rdyEbH4-unsplash 1.png" alt="" class="baniere-home">
+<img src="/tomtroc/images/clay-banks-4uH8rdyEbH4-unsplash.png" alt="" class="baniere-home">
 
 <section class="our-values">
     <div class="content-our-values">

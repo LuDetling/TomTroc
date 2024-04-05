@@ -60,7 +60,7 @@
                         ?>
                     </div>
                     <form action="index.php?action=messagerie&idUserTo=<?= $userTo->getId() ?>" class="bottom-discussion" method="POST">
-                        <textarea type="text" placeholder="Tapez votre message ici" name="message"></textarea>
+                        <textarea placeholder="Tapez votre message ici" name="message"></textarea>
                         <button type="submit" class="button button-green">Envoyer</button>
                     </form>
                 </div>
