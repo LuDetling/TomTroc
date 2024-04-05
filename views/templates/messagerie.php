@@ -13,7 +13,7 @@
                         <?php } else { ?>
                         <li><?php } ?>
                         <a href="index.php?action=messagerie&idUserTo=<?= $userChat["user_to"] ?>">
-                            <img src="upload/avatar/<?= $userChat["avatar"] ?>" alt="">
+                            <img src="./public/upload/avatar/<?= $userChat["avatar"] ?>" alt="">
                             <div class="content-contact">
                                 <div class="name-hour">
                                     <div><?= $userChat["pseudo"] ?></div>
@@ -38,7 +38,7 @@
             ?>
                 <div class="content-discussion">
                     <div class="top-discussion">
-                        <img src="upload/avatar/<?= $userTo->getAvatar() ?>" alt="">
+                        <img src="./public/upload/avatar/<?= $userTo->getAvatar() ?>" alt="">
                         <div><?= $userTo->getPseudo() ?></div>
                     </div>
                     <div class="discussion">
@@ -49,7 +49,7 @@
                                 <div class="top-message">
                                     <?php if ($message["user_from"] == $userTo->getId() && (empty($messages[$key + 1]) || $message["user_from"] != $messages[$key + 1]["user_from"])) {
                                     ?>
-                                        <img src="upload/avatar/<?= $message["avatar"] ?>" alt="">
+                                        <img src="./public/upload/avatar/<?= $message["avatar"] ?>" alt="">
                                     <?php } ?>
                                     <div><?= Utils::convertDateHour(new DateTime($message["date_send"])) ?></div>
                                 </div>

@@ -9,7 +9,7 @@
         <form class="content-edit-book" method="POST" enctype="multipart/form-data">
             <div class="left-edit-book">
                 <label>Photo</label>
-                <img src="upload/books/<?= $book->getImg() ?>" alt="Image de <?= $book->getTitle() ?>">
+                <img src="./public/upload/books/<?= $book->getImg() ?>" alt="Image de <?= $book->getTitle() ?>">
                 <div class="edit-img">
                     <input type="file" id="img" name="img" accept=".jpeg, .jpg, .png">
                     <label for="img" class="edit-image">Modifier la photo</label>

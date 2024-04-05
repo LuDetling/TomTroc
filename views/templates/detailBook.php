@@ -6,7 +6,7 @@
         <div> <?= $book->getTitle() ?></div>
     </div>
     <div class="detail-book">
-        <img src="upload/books/<?= $book->getImg() ?>" alt="image du livre <?= $book->getTitle() ?>">
+        <img src="./public/upload/books/<?= $book->getImg() ?>" alt="image du livre <?= $book->getTitle() ?>">
         <div class="content-book">
             <h1><?= $book->getTitle() ?></h1>
             <div class="author">par <?= $book->getAuthor() ?></div>
@@ -14,7 +14,7 @@
             <p class="description"><?= $book->getDescription() ?></p>
             <div class="title-part">Propriétaire</div>
             <a href="index.php?action=<?= isset($sessionUser) && $sessionUser->getId() != $user->getId() ? "profilPublic&userId=" . $user->getId() : "profil" ?>" class="content-owner">
-                <img src="upload/avatar/<?= $user->getAvatar() ?>" alt="image du propriétaire">
+                <img src="./public/upload/avatar/<?= $user->getAvatar() ?>" alt="image du propriétaire">
                 <div><?= $user->getPseudo() ?></div>
             </a>
             <?php

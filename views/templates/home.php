@@ -5,7 +5,7 @@
         <a href="index.php?action=showBooks" class="button button-green">Découvrir</a>
     </div>
     <div class="right-top-home">
-        <img src="/tomtroc/images/hamza-nouasria-KXrvPthkmYQ-unsplash.png" alt="Photo d'Hamza Nousaria">
+        <img src="./public/images/hamza-nouasria-KXrvPthkmYQ-unsplash.png" alt="Photo d'Hamza Nousaria">
         <div>Hamza</div>
     </div>
 </section>
@@ -15,7 +15,7 @@
     <div class="content-cards content-last-cards">
         <?php foreach ($books as $book) : ?>
             <a href='index.php?action=showBook&id=<?= $book["id"] ?>' class='card-book'>
-                <img src='upload/books/<?= $book["img"] ?>' alt='image du livre "<?= $book["title"] ?>'>
+                <img src='./public/upload/books/<?= $book["img"] ?>' alt='image du livre "<?= $book["title"] ?>'>
                 <div class='text-book'>
                     <h3><?= $book["title"] ?></h3>
                     <div class='book-author'><?= $book["author"] ?></div>
@@ -39,7 +39,7 @@
     <a href="index.php?action=showBooks" class="button button-border-green">Voir tous les livres</a>
 </section>
 
-<img src="/tomtroc/images/clay-banks-4uH8rdyEbH4-unsplash.png" alt="" class="baniere-home">
+<img src="./public/images/clay-banks-4uH8rdyEbH4-unsplash.png" alt="" class="baniere-home">
 
 <section class="our-values">
     <div class="content-our-values">
@@ -49,7 +49,7 @@
         <p>Nous sommes passionnés par la création d'une plateforme conviviale qui permet aux lecteurs de se connecter, de partager leurs découvertes littéraires et d'échanger des livres qui attendent patiemment sur les étagères.</p>
         <div class="team-heart">
             <div>L’équipe Tom Troc</div>
-            <img src="/tomtroc/images/green-heart.svg" alt="coeur vert">
+            <img src="./public/images/green-heart.svg" alt="coeur vert">
         </div>
     </div>
 </section>

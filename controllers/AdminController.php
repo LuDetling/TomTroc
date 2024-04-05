@@ -3,9 +3,12 @@
 class AdminController
 {
 
+    /**
+     * The function `connexion` checks if email and password are provided in the POST request, then logs
+     * in the user and renders the "connexion" view.
+     */
     public function connexion(): void
     {
-        //verif regex plus tard du coup ne pas faire les erreurs comme ça dans le connexion.php mais avec session["error"]
         if (!empty($_POST["email"]) && !empty($_POST["password"])) {
             $this->loginUser();
         }
@@ -15,10 +18,17 @@ class AdminController
         unset($_SESSION["error"]);
     }
 
+    /**
+     * This PHP function is used to log in a user by verifying their email and password, setting
+     * session variables accordingly, and handling errors.
+     * 
+     * @return void If the email provided by the user does not match any user in the system, the error
+     * message "Pas la bonne email" will be stored in the session under the key "error"["email"]. If
+     * the password provided by the user does not match the password stored for the user, the error
+     * message "Le mot de passe est incorrect" will be stored in the session under the key "error"
+     */
     public function loginUser(): void
     {
-
-
         $email = $_POST["email"];
 
         $userManager = new UserManager();
@@ -50,34 +60,21 @@ class AdminController
 
     public function inscription(): void
     {
-        if (!empty($_POST["pseudo"]) || !empty($_POST["email"]) || !empty($_POST["password"])) {
+        unset($_SESSION["error"]);
+        unset($_SESSION["vide"]);
+        unset($_SESSION["user"]);
+        if (!empty($_POST["pseudo"]) && !empty($_POST["email"]) && !empty($_POST["password"])) {
             $this->createUser();
+        } else if (isset($_POST["pseudo"])) {
+            $_SESSION["vide"] = "Tous les champs doivent être renseignés";
         }
 
         $view = new View("Inscription");
         $view->render("inscription");
-        unset($_SESSION["error"]);
-        unset($_SESSION["user"]);
     }
 
     public function createUser(): void
     {
-        $error = [
-            "pseudo" => null,
-            "email" => null,
-            "password" => null
-        ];
-
-        $_SESSION["error"] = $error;
-        // mieux vérifier les erreurs
-
-        if (empty($_POST["pseudo"]) || empty($_POST["email"]) || empty($_POST["password"])) {
-            $error["pseudo"] = "il manque le pseudo";
-            $error["email"] = "il manque le email";
-            $_SESSION["error"] = $error;
-        }
-
-        //peut monter au dessus de la vérif vu qu'on a déja verif dans la fonction inscription
         $pseudo = $_POST["pseudo"];
         $email = $_POST["email"];
         $password = $_POST["password"];

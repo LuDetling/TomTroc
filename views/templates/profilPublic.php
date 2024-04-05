@@ -4,13 +4,13 @@
 <section class="background-profil-public">
     <div class="content-profil-public">
         <div class="left-profil-public">
-            <img src="upload/avatar/<?= $profilPublic[0]["avatar"] ?>" alt="Image de profil de <?= $profilPublic[0]["pseudo"] ?>" class="avatar">
+            <img src="./public/upload/avatar/<?= $profilPublic[0]["avatar"] ?>" alt="Image de profil de <?= $profilPublic[0]["pseudo"] ?>" class="avatar">
             <div class="trait"></div>
             <div class="pseudo"><?= $profilPublic[0]["pseudo"] ?></div>
             <div class="date"><?= Utils::convertDateToFrenchFormat(new DateTime($profilPublic[0]["date_creation"])) ?></div>
             <div class="count-books">
                 <div>BIBLIOTHEQUE</div>
-                <div><img src="images/book.svg" alt="icone de livre"> <?= count($profilPublic) ?> livres</div>
+                <div><img src="./public/images/book.svg" alt="icone de livre"> <?= count($profilPublic) ?> livres</div>
             </div>
             <button class="button button-border-green">Écrire un message</button>
         </div>
@@ -32,7 +32,7 @@
                             <tr>
                                 <td>
                                     <a href="index.php?action=showBook&id=<?= $book["id"] ?>">
-                                        <img src="upload/books/<?= $book["img"] ?>" alt="image du livre <?= $book["title"] ?>">
+                                        <img src="./public/upload/books/<?= $book["img"] ?>" alt="image du livre <?= $book["title"] ?>">
                                     </a>
                                 </td>
                                 <td class="title">

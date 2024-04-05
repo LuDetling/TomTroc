@@ -28,14 +28,20 @@ try {
             $bookController->showBook();
             break;
         case 'editBook':
+            if (!isset($_SESSION["user"]))
+                Utils::redirect("connexion");
             $bookController = new BookController();
             $bookController->editBook();
             break;
         case 'addBook':
+            if (!isset($_SESSION["user"]))
+                Utils::redirect("connexion");
             $bookController = new BookController();
             $bookController->addBook();
             break;
         case 'deleteBook':
+            if (!isset($_SESSION["user"]))
+                Utils::redirect("connexion");
             $bookController = new BookController();
             $bookController->deleteBook();
             break;

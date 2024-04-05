@@ -8,7 +8,7 @@
 
             <form action="index.php?action=profil" method="POST" enctype="multipart/form-data">
                 <div class="profil">
-                    <img src="upload/avatar/<?= $user->avatar ? $user->avatar : null ?>" alt="photo de profile">
+                    <img src="./public/upload/avatar/<?= $user->avatar ? $user->avatar : null ?>" alt="photo de profile">
                     <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
                     <label for="avatar" class="avatar">modifier</label>
                     <div class="trait"></div>
@@ -55,7 +55,7 @@
                         <?php
                         foreach ($books as $book) {
                             echo "<tr>";
-                            echo "  <td><img src=upload/books/" . $book->getImg() . " alt='Image du livre " . $book->getTitle() . "'></td>";
+                            echo "  <td><img src=./public/upload/books/" . $book->getImg() . " alt='Image du livre " . $book->getTitle() . "'></td>";
                             echo "  <td class='title'>" . $book->getTitle() . "</td>";
                             echo "  <td class='author'>" . $book->getAuthor() . "</td>";
                             echo "  <td><p class='description'> " . $book->getDescription() . "</p></td>";

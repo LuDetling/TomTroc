@@ -12,7 +12,7 @@
     <div class="content-cards">
         <?php foreach ($books as $book) : ?>
             <a href='index.php?action=showBook&id=<?= $book["id"] ?>' class='card-book'>
-                <img src='upload/books/<?= $book["img"] ?>' alt='image du livre <?= $book["title"] ?>'>
+                <img src='./public/upload/books/<?= $book["img"] ?>' alt='image du livre <?= $book["title"] ?>'>
                 <div class='text-book'>
                     <h3><?= $book["title"] ?></h3>
                     <div class='book-author'><?= $book["author"] ?></div>

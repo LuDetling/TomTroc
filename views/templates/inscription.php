@@ -4,6 +4,9 @@
             <h1>Inscription</h1>
             <form action="index.php?action=inscription" method="POST">
                 <div>
+                    <?php if (!empty($_SESSION["vide"])) { ?>
+                        <p><?= $_SESSION["vide"] ?></p>
+                    <?php } ?>
                     <label for="pseudo">Pseudo</label>
                     <input type="text" id="pseudo" name="pseudo">
                     <?php
@@ -41,7 +44,7 @@
             <div class="connexion">Déjà inscrit ? <a href="index.php?action=connexion">Connectez-vous</a></div>
         </div>
     </div>
-    <img src="/tomtroc/images/marialaura-gionfriddo-50G3FvyQxX0-unsplash.png" alt="image inscription">
+    <img src="./public/images/marialaura-gionfriddo-50G3FvyQxX0-unsplash.png" alt="image inscription">
 </section>
 
 <?php
