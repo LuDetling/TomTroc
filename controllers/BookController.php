@@ -61,9 +61,12 @@ class BookController
 
         $bookManager = new BookManager();
         $book = $bookManager->getBookById($id);
+        $user = unserialize($_SESSION["user"]);
 
         if (!$book) {
             throw new Exception("L'article demandé n'existe pas.");
+        } else if ($book && $book->getUserId() != $user->getId()) {
+            throw new Exception("Vous n'êtes pas authorisé à modifier ce livre.");
         }
 
         if (isset($_POST["author"])) {
