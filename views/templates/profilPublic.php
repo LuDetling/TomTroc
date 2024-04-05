@@ -4,10 +4,10 @@
 <section class="background-profil-public">
     <div class="content-profil-public">
         <div class="left-profil-public">
-            <img src="upload/avatar/<?= $profilPublic[0]["avatar"] ?>" alt="">
+            <img src="upload/avatar/<?= $profilPublic[0]["avatar"] ?>" alt="Image de profil de <?= $profilPublic[0]["pseudo"] ?>" class="avatar">
             <div class="trait"></div>
-            <div><?= $profilPublic[0]["pseudo"] ?></div>
-            <div><?= Utils::convertDateToFrenchFormat(new DateTime($profilPublic[0]["date_creation"])) ?></div>
+            <div class="pseudo"><?= $profilPublic[0]["pseudo"] ?></div>
+            <div class="date"><?= Utils::convertDateToFrenchFormat(new DateTime($profilPublic[0]["date_creation"])) ?></div>
             <div class="count-books">
                 <div>BIBLIOTHEQUE</div>
                 <div><img src="images/book.svg" alt="icone de livre"> <?= count($profilPublic) ?> livres</div>

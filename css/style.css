@@ -1041,6 +1041,52 @@ table tr:last-child td:last-child {
     min-width: 341px;
     background-color: white;
     border-radius: 20px;
+    text-align: center;
+}
+
+.left-profil-public .avatar {
+    width: 135px;
+    height: 135px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: auto;
+    display: block;
+    margin-top: 48px;
+}
+.left-profil-public .trait {
+    width: 242px;
+    height: 1px;
+    background-color: #f5f3ef;
+    margin: 70px auto 48px;
+}
+
+.left-profil-public .pseudo {
+    font-family: "Playfair Display", sans-serif;
+    font-size: 24px;
+    color: var(--gris-fonce);
+    margin-bottom: 11px;
+}
+.left-profil-public .date {
+    color: var(--gris-texte);
+    font-size: 14px;
+    margin-bottom: 21px;
+}
+
+.left-profil-public .count-books {
+    color: var(--gris-fonce);
+}
+.left-profil-public .count-books div:first-child {
+    font-size: 8px;
+    font-family: "InterSB";
+    margin-bottom: 6px;
+}
+.left-profil-public .count-books div:last-child {
+    font-size: 14px;
+    margin-bottom: 45px;
+}
+
+.left-profil-public .button {
+    margin: auto;
 }
 
 .right-profil-public {
