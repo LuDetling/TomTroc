@@ -58,6 +58,7 @@ class BookController
     public function editBook(): void
     {
         $id = Utils::request('id', -1);
+        unset($_SESSION["error"]);
 
         $bookManager = new BookManager();
         $book = $bookManager->getBookById($id);
@@ -69,46 +70,46 @@ class BookController
             throw new Exception("Vous n'êtes pas authorisé à modifier ce livre.");
         }
 
-        if (isset($_POST["author"])) {
-            if (isset($_FILES["img"])) {
+        if (!empty($_POST["author"]) && !empty($_POST["title"]) && !empty($_POST["description"]) && !empty($_POST["disponibility"]) && !empty($_FILES["img"])) {
 
-                $name = $_FILES["img"]["name"];
-                $size = $_FILES["img"]["size"];
-                $tmpName = $_FILES["img"]["tmp_name"];
-                $error = $_FILES["img"]["error"];
+            $name = $_FILES["img"]["name"];
+            $size = $_FILES["img"]["size"];
+            $tmpName = $_FILES["img"]["tmp_name"];
+            $error = $_FILES["img"]["error"];
 
-                $tabExtension = explode('.', $name);
-                $extension = strtolower(end($tabExtension));
-                $extensions = ["jpg", "png", "jpeg"];
-                $maxSize = 4000000;
+            $tabExtension = explode('.', $name);
+            $extension = strtolower(end($tabExtension));
+            $extensions = ["jpg", "png", "jpeg"];
+            $maxSize = 4000000;
 
-                $file = $book->getImg();
+            $file = $book->getImg();
 
-                if (in_array($extension, $extensions) && $size <= $maxSize && $error == 0) {
+            if (in_array($extension, $extensions) && $size <= $maxSize && $error == 0) {
 
-                    $uniqueName = uniqid("", true);
-                    $file = $uniqueName . "." . $extension;
+                $uniqueName = uniqid("", true);
+                $file = $uniqueName . "." . $extension;
 
-                    move_uploaded_file($tmpName, './upload/books/' . $file);
+                move_uploaded_file($tmpName, './public/upload/books/' . $file);
 
-                    unset($_SESSION["errorImg"]);
-                    unlink("./upload/books/" . $book->getImg());
-                } else {
-                    $_SESSION["errorImg"] = "Il y a une erreur avec l'image";
-                }
-
-                $editBook = new Book([
-                    "id" => $book->getId(),
-                    "title" => $_POST["title"],
-                    "author" => $_POST["author"],
-                    "description" => $_POST["description"],
-                    "disponibility" => $_POST["disponibility"],
-                    "img" => $file,
-                ]);
-
-                $bookManager->editBook($editBook);
-                Utils::redirect("showBook&id=" . $book->getId());
+                unset($_SESSION["errorImg"]);
+                unlink("./public/upload/books/" . $book->getImg());
+            } else {
+                $_SESSION["errorImg"] = "Il y a une erreur avec l'image";
             }
+
+            $editBook = new Book([
+                "id" => $book->getId(),
+                "title" => $_POST["title"],
+                "author" => $_POST["author"],
+                "description" => $_POST["description"],
+                "disponibility" => $_POST["disponibility"],
+                "img" => $file,
+            ]);
+
+            $bookManager->editBook($editBook);
+            Utils::redirect("showBook&id=" . $book->getId());
+        } else {
+            $_SESSION["error"] = "Tous les champs doivent être remplit";
         }
 
         $view = new View($book->getTitle());
@@ -121,44 +122,44 @@ class BookController
         $userId = $user->getId();
 
         $bookManager = new BookManager();
+        if (!empty($_POST["author"]) && !empty($_POST["title"]) && !empty($_POST["description"]) && !empty($_POST["disponibility"]) && !empty($_FILES["img"])) {
 
-        if (isset($_POST["author"])) {
-            if (isset($_FILES["img"])) {
 
-                $name = $_FILES["img"]["name"];
-                $size = $_FILES["img"]["size"];
-                $tmpName = $_FILES["img"]["tmp_name"];
-                $error = $_FILES["img"]["error"];
+            $name = $_FILES["img"]["name"];
+            $size = $_FILES["img"]["size"];
+            $tmpName = $_FILES["img"]["tmp_name"];
+            $error = $_FILES["img"]["error"];
 
-                $tabExtension = explode('.', $name);
-                $extension = strtolower(end($tabExtension));
-                $extensions = ["jpg", "png", "jpeg"];
-                $maxSize = 4000000;
+            $tabExtension = explode('.', $name);
+            $extension = strtolower(end($tabExtension));
+            $extensions = ["jpg", "png", "jpeg"];
+            $maxSize = 4000000;
 
-                if (in_array($extension, $extensions) && $size <= $maxSize && $error == 0) {
+            if (in_array($extension, $extensions) && $size <= $maxSize && $error == 0) {
 
-                    $uniqueName = uniqid("", true);
-                    $file = $uniqueName . "." . $extension;
+                $uniqueName = uniqid("", true);
+                $file = $uniqueName . "." . $extension;
 
-                    move_uploaded_file($tmpName, './upload/books/' . $file);
+                move_uploaded_file($tmpName, './public/upload/books/' . $file);
 
-                    unset($_SESSION["errorImg"]);
-                } else {
-                    $_SESSION["errorImg"] = "Il y a une erreur avec l'image";
-                }
-
-                $addBook = new Book([
-                    "userId" => $userId,
-                    "title" => $_POST["title"],
-                    "author" => $_POST["author"],
-                    "description" => $_POST["description"],
-                    "disponibility" => $_POST["disponibility"],
-                    "img" => $file,
-                ]);
-
-                $idNewBook = $bookManager->addBook($addBook);
-                Utils::redirect("showBook&id=" . $idNewBook);
+                unset($_SESSION["errorImg"]);
+            } else {
+                $_SESSION["errorImg"] = "Il y a une erreur avec l'image";
             }
+
+            $addBook = new Book([
+                "userId" => $userId,
+                "title" => $_POST["title"],
+                "author" => $_POST["author"],
+                "description" => $_POST["description"],
+                "disponibility" => $_POST["disponibility"],
+                "img" => $file,
+            ]);
+
+            $idNewBook = $bookManager->addBook($addBook);
+            Utils::redirect("showBook&id=" . $idNewBook);
+        } else {
+            $_SESSION["error"] = "Tous les champs doivent être remplit";
         }
 
         $view = new View("addBook");

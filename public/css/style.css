@@ -1094,3 +1094,10 @@ table tr:last-child td:last-child {
     background-color: white;
     border-radius: 20px;
 }
+
+.error {
+    text-align: center;
+    padding: 1rem 0;
+    display: block;
+    color: red;
+}

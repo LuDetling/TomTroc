@@ -6,6 +6,11 @@
         <h1>Modifier les informations</h1>
     </div>
     <div class="page-edit-book">
+
+        <?php if (isset($_POST["description"]) && isset($_SESSION["error"])) { ?>
+            <p class="error"><?= $_SESSION["error"] ?></p>
+        <?php }; ?>
+
         <form class="content-edit-book" method="POST" enctype="multipart/form-data">
             <div class="left-edit-book">
                 <label>Photo</label>
